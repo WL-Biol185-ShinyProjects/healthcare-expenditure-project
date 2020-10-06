@@ -3,15 +3,14 @@ library(tidyr)
 library(dplyr)
 library(readr)
 
-slide2_data <- read_csv("Table 11 HE by state of residence per capita.csv")
+slide3_data <- read_csv("Table 11 HE by state of residence per capita.csv")
 
 
-names(slide2_data) <- lapply(slide2_data[1, ], as.character)
-slide2 <- slide2_data[-1,]
+names(slide3_data) <- lapply(slide3_data[1, ], as.character)
+slide3 <- slide3_data[-1,]
 
-slide_new <- slide2_data %>%
-  rownames_to_column("1") %>%
-  rename(State = "Region/state of residence")
-  
+tidy_slide3 <- gather(slide3[1:25],
+                      key = "year",
+                      value = "USD",
+                      2:25)
 
-slide_new <- subset(!slide_new["Region/state of residence"] == "United States")

@@ -8,8 +8,11 @@ tidy21 <- gather(table21[1:25],
                  key = "year",
                  value = "USD",
                  2:25)
+<<<<<<< HEAD
 
 tidy21_clean <- tidy21 %>%
   rowwise() %>%
   
   
+=======
+>>>>>>> 2c928a0d84e2a2751e01ffd74e0cff666fd63915
