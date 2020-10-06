@@ -8,4 +8,3 @@ tidy21 <- gather(table21[1:25],
                  key = "year",
                  value = "USD",
                  2:25)
-  
