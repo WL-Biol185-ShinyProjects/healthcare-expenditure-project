@@ -15,10 +15,15 @@ tidy_slide3 <- gather(slide3[1:25],
                       value = "USD",
                       2:25) %>%
   rename(State = "Region/state of residence") %>%
-  mutate(year = as.numeric(year))
+  mutate(Year = as.numeric(year)) %>%
+  select(-(year))
 
 US <- tidy_slide3$year[tidy_slide3$state == "United States"]
 
-ggplot(tidy_slide3, aes(tidy_slide3$year[tidy_slide3$State == "United States"], USD)) +
+NE_year <- tidy_slide3$Year[tidy_slide3$State == "New England"]
+NE_dollars <- tidy_slide3$USD[tidy_slide3$State == "New England"]
+NE_dollars <- as.numeric(NE_dollars)
+
+ggplot(tidy_slide3, aes(NE_year, NE_dollars)) +
   geom_line()
 
