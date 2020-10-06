@@ -36,5 +36,15 @@ ggplot(US, aes(Year, dollars)) +
   geom_line()
 
 regions <- tidy_slide3 %>%
-  filter(State == "New England" | State == "Mideast" | State == "Great Lakes") | State == "Plains" | State == "Southeast" | State == "Southwest" | State == "Rocky Mountains" | State == "Far West")
+  filter(State == "New England" | State == "Mideast" | State == "Great Lakes" |
+         State == "Plains" | State == "Southeast" | State == "Southwest" | 
+         State == "Rocky Mountains" | State == "Far West")
 
+ggplot(regions, aes(Year, dollars, color = State)) +
+  geom_line()
+
+states <- tidy_slide3 %>%
+  filter(State == "New York" | State == "Illinois" | State == "Virginia")
+
+ggplot(states, aes(Year, dollars, color = State)) +
+  geom_line()
