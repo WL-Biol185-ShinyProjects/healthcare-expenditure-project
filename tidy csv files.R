@@ -38,3 +38,4 @@ tidyTables <- function(table) {
 
 
 table11 <- tidyTables("Table 11 HE by state of residence per capita.csv")
+table12 <- tidyTables("Table 12 Hospital expenditures by state per capita.csv")
