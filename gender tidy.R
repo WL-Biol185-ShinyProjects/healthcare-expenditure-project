@@ -108,7 +108,9 @@ age_total <- gender %>%
 
 age_females <- age_total %>%
   filter(!group == "total") %>%
-  filter(!group == "male")
+  filter(!group == "male") %>%
+  filter(!ageGroup == "19-64") %>%
+  filter(!ageGroup == "65+")
 
 ggplot(age_females, aes(year, USD, color = ageGroup)) +
   geom_line()
