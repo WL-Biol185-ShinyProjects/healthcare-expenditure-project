@@ -59,8 +59,25 @@ slide5_data <- mutate(slide5_data, otherHealthInsurancePrograms = as.numeric(oth
 slide5_data <- mutate(slide5_data, otherThirdPartyPayers = as.numeric(otherThirdPartyPayers))
 
 #graph
-ggplot(slide5_data, aes(Year, total)) +
+ggplot(slide5_data, aes(Year, outOfPocket)) +
    geom_point()
+
+df %>% select(Year, total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers) %>%
+  pivot_longer(., cols = c(num1,num2), names_to = "Var", values_to = "Val")
+
+# 
+# ggplot(slide5_data, aes(Year, total)) +
+#   geom_point()
+
+# ggplot(slide5_data, aes(Year, total)) +
+#   geom_point()
+
+# slide5_data %>% tidyr::gather("id", "value", 1:9) %>% 
+#   ggplot(., aes(slide5_data, value))+
+#   geom_point()+
+#   geom_smooth(method = "lm", se=FALSE, color="black")
+
+
 
 # tidy_slide5 <- gather(slide5[1:9])
 #                     key = "year",
