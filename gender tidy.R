@@ -36,16 +36,28 @@ tidy_slide4 <- tidy_slide4 %>%
   mutate(USD = as.numeric(USD)) %>%
   select(-(year))
   
-#making male a vector  
 
 total <- slide4[-9:-25,] %>%
   mutate(group = "total")
 
 male_female <- slide4[-1:-8,]
 
-male <- male_female[-9:-17,] %>%
-  mutate(group = "male")
+male <- male_female[-9:-17,] 
+
+male_2 <- gather(male[1:8],
+                 key = "year",
+                 value = "USD",
+                 2:8) %>%
+  mutate(group = "male") %>%
+  rename(ageGroup = "Age group")
+
+male_2$USD <- gsub(",", "", male_2$USD, fixed = TRUE)
+
+male_2 <- male_2 %>%
+  mutate(year = as.numeric(year),
+         dollars = as.numeric(USD)) %>%
+  select(ageGroup, group, year, dollars) %>%
+  rename(USD = dollars)
 
 female <- male_female[-1:-8,] %>%
   mutate(group = "female")
-  filter(!is.na("2002"))
