@@ -21,22 +21,23 @@ male <- male_female[-9:-17,]
 
 female <- male_female[-1:-8,]
 
-
-names(table7_new) <- lapply(table7[1, ], as.character)
-table7_new <- table7_new[-1,]
-
-#just want the levels, not the average annual growth
-#delete the average annual growth
-
 #the gather function should only take the first 8
 tidy_slide4 <- gather(slide4[1:8],
                       key = "year",
                       value = "USD",
                       2:8) %>%
-  rename(State = "Region/state of residence") %>%
+  rename(ageGroup = "Age group") %>%
+  #filters out rows with "NA"
   filter(!is.na(USD)) %>%
-  mutate(Year = as.numeric(year)) %>%
+  #converts years to numeric
+  mutate(Year = as.numeric(year))
+
+#removes all of the commas and replaces it with a "" character
+tidy_slide4$USD <- gsub(",", "", tidy_slide4$USD, fixed = TRUE)
+
+#converts string USD into int USD
+tidy_slide4 <- tidy_slide4 %>%
+  mutate(USD = as.numeric(USD)) %>%
   select(-(year))
-
-
-
+  
+#making male a vector  
