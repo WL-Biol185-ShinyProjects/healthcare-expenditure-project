@@ -100,3 +100,15 @@ gender_total <- gender %>%
 
 ggplot(gender_total, aes(year, USD, color = group)) +
   geom_line()
+
+age_total <- gender %>%
+  filter(!ageGroup == "Total") %>%
+  filter(!ageGroup == "Males") %>%
+  filter(!ageGroup == "Females")
+
+age_females <- age_total %>%
+  filter(!group == "total") %>%
+  filter(!group == "male")
+
+ggplot(age_total, aes(year, USD, color = ageGroup)) +
+  geom_line()
