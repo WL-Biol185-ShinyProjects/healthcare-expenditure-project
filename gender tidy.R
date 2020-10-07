@@ -37,8 +37,23 @@ tidy_slide4 <- tidy_slide4 %>%
   select(-(year))
   
 
-total <- slide4[-9:-25,] %>%
-  mutate(group = "total")
+total <- slide4[-9:-25,]
+
+total_2 <- gather(total[1:8],
+                  key = "year",
+                  value = "USD",
+                  2:8) %>%
+  mutate(group = "total") %>%
+  rename(ageGroup = "Age group")
+
+total_2$USD <- gsub(",", "", total_2$USD, fixed = TRUE)
+
+total_2 <- total_2 %>%
+  mutate(year = as.numeric(year),
+         dollars = as.numeric(USD)) %>%
+  select(ageGroup, group, year, dollars) %>%
+  rename(USD = dollars)
+
 
 male_female <- slide4[-1:-8,]
 
@@ -59,5 +74,41 @@ male_2 <- male_2 %>%
   select(ageGroup, group, year, dollars) %>%
   rename(USD = dollars)
 
-female <- male_female[-1:-8,] %>%
-  mutate(group = "female")
+female <- male_female[-1:-8,]
+
+female_2 <- gather(female[1:8],
+                   key = "year",
+                   value = "USD",
+                   2:8) %>%
+  mutate(group = "female") %>%
+  rename(ageGroup = "Age group") %>%
+  filter(!is.na(USD))
+
+female_2$USD <- gsub(",", "", female_2$USD, fixed = TRUE)
+
+female_2 <- female_2 %>%
+  mutate(year = as.numeric(year),
+         dollars = as.numeric(USD)) %>%
+  select(ageGroup, group, year, dollars) %>%
+  rename(USD = dollars)
+
+
+gender <- bind_rows(total_2, male_2, female_2)
+
+gender_total <- gender %>%
+  filter(ageGroup == "Total" | ageGroup == "Males" | ageGroup == "Females")
+
+ggplot(gender_total, aes(year, USD, color = group)) +
+  geom_line()
+
+age_total <- gender %>%
+  filter(!ageGroup == "Total") %>%
+  filter(!ageGroup == "Males") %>%
+  filter(!ageGroup == "Females")
+
+age_females <- age_total %>%
+  filter(!group == "total") %>%
+  filter(!group == "male")
+
+ggplot(age_total, aes(year, USD, color = ageGroup)) +
+  geom_line()
