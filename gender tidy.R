@@ -6,8 +6,12 @@ library(readr)
 library(ggplot2)
 
 slide4_data <- read_csv("Table 7 personal health care per capita AGE GENDER.csv")
+
+# this line is setting the names of columns equal to the data in the third row which contains the years
 names(slide4_data) <- lapply(slide4_data[3, ], as.character)
-slide4 <- slide4_data[-2,]
+
+# this line removes rows 1:3
+slide4 <- slide4_data[-1:-3,]
 
 names(table7_new) <- lapply(table7[1, ], as.character)
 table7_new <- table7_new[-1,]
