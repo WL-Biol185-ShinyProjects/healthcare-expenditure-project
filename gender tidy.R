@@ -13,13 +13,9 @@ names(slide4_data) <- lapply(slide4_data[3, ], as.character)
 # this line removes rows 1:3
 slide4 <- slide4_data[-1:-3,]
 
-total <- slide4[-9:-25,]
+# removes unwanted client
+slide4 <- slide4[1:8]
 
-male_female <- slide4[-1:-8,]
-
-male <- male_female[-9:-17,]
-
-female <- male_female[-1:-8,]
 
 #the gather function should only take the first 8
 tidy_slide4 <- gather(slide4[1:8],
@@ -41,3 +37,15 @@ tidy_slide4 <- tidy_slide4 %>%
   select(-(year))
   
 #making male a vector  
+
+total <- slide4[-9:-25,] %>%
+  mutate(group = "total")
+
+male_female <- slide4[-1:-8,]
+
+male <- male_female[-9:-17,] %>%
+  mutate(group = "male")
+
+female <- male_female[-1:-8,] %>%
+  mutate(group = "female")
+  filter(!is.na("2002"))
