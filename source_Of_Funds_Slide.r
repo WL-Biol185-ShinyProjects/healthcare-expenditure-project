@@ -6,23 +6,39 @@ library(readr)
 library(ggplot2)
 
 slide5_data <- read_csv("Table 06 Personal Health Care Expenditures.csv")
-names(slide5_data) <- lapply(slide5_data[1, ], as.character)
+#takes the second row and makes it the column headers as characters
+names(slide5_data) <- lapply(slide5_data[2, ], as.character)
 
-slide5 <- slide5_data[-1,]
+#removes the following lines
+slide5_data <- slide5_data[-1:-3,]
 
-#need to get the column names working
+#removes the 3 empty columns
+slide5_data <- slide5_data[,-10:-12]
 
-#tidy_slide5 <- gather(slide5[1:9])
-   #                     key = "year",
-   #                     value = "USD",
-   #                     2:25) %>%
-   # rename(State = "Region/state of residence") %>%
-   # filter(!is.na(USD)) %>%
-   # mutate(Year = as.numeric(year)) %>%
-   # select(-(year))
+#rename all of the column headers to be one word
+slide5_data <- rename(slide5_data, outOfPocket = "Out of Pocket")
+slide5_data <- rename(slide5_data, healthInsurance = "Health Insurance2")
+slide5_data <- rename(slide5_data, privateHealthInsurance = "Private Health Insurance")
+
+
+
+#removes all of the "$"
+#slide5_data$Total1 <- gsub("$", "", slide5_data$Total1, fixed = TRUE)
+#slide5_data$OutofPocket <- gsub("$", "", slide5_data$OutofPocket, fixed = TRUE)
+
+#removes all of the ","
+#slide5_data$Total1 <- gsub(",", "", slide5_data$Total1, fixed = TRUE)
+
+
+# tidy_slide5 <- gather(slide5[1:9])
+#                     key = "year",
+#                     value = "USD",
+#                     2:25) %>%
+#    rename(State = "Region/state of residence") %>%
+#    filter(!is.na(USD)) %>%
+#    mutate(Year = as.numeric(year)) %>%
+#    select(-(year))
  
-# tidy_slide3$USD <- gsub("$", "", tidy_slide3$USD, fixed = TRUE)
-# tidy_slide3$USD <- gsub(",", "", tidy_slide3$USD, fixed = TRUE)
 # 
 # 
 # tidy_slide3 <- tidy_slide3 %>%
