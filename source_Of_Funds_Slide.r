@@ -37,7 +37,7 @@ slide5_data$medicare <- gsub("$", "", slide5_data$medicare, fixed = TRUE)
 slide5_data$medicaid <- gsub("$", "", slide5_data$medicaid, fixed = TRUE)
 slide5_data$otherHealthInsurancePrograms <- gsub("$", "", slide5_data$otherHealthInsurancePrograms, fixed = TRUE)
 slide5_data$otherThirdPartyPayers <- gsub("$", "", slide5_data$otherThirdPartyPayers, fixed = TRUE)
-
+ 
 #removes all of the ","
 slide5_data$total <- gsub(",", "", slide5_data$total, fixed = TRUE)
 slide5_data$outOfPocket <- gsub(",", "", slide5_data$outOfPocket, fixed = TRUE)
@@ -49,6 +49,7 @@ slide5_data$otherHealthInsurancePrograms <- gsub(",", "", slide5_data$otherHealt
 slide5_data$otherThirdPartyPayers <- gsub(",", "", slide5_data$otherThirdPartyPayers, fixed = TRUE)
 
 #make all of the columns numeric
+slide5_data <- mutate(slide5_data, Year = as.numeric(Year))
 slide5_data <- mutate(slide5_data, total = as.numeric(total))
 slide5_data <- mutate(slide5_data, outOfPocket = as.numeric(outOfPocket))
 slide5_data <- mutate(slide5_data, healthInsurance = as.numeric(healthInsurance))
@@ -58,12 +59,34 @@ slide5_data <- mutate(slide5_data, medicaid = as.numeric(medicaid))
 slide5_data <- mutate(slide5_data, otherHealthInsurancePrograms = as.numeric(otherHealthInsurancePrograms))
 slide5_data <- mutate(slide5_data, otherThirdPartyPayers = as.numeric(otherThirdPartyPayers))
 
-#graph
-ggplot(slide5_data, aes(Year, outOfPocket)) +
-   geom_point()
+tidy_slide5 <- gather(slide5_data[1:9],
+                      key = "category",
+                      value = "USD",
+                      2:9)
 
-df %>% select(Year, total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers) %>%
-  pivot_longer(., cols = c(num1,num2), names_to = "Var", values_to = "Val")
+#graph
+ggplot(tidy_slide5, aes(Year, USD, color = category)) +
+  geom_line()
+
+
+
+
+
+# p <- lapply(
+#   colnames(ggdata)[2:9],
+#   function(col) ggplot(ggdata, aes_string(x = 'Year', y = col)) +
+#     geom_point() +
+#     geom_smooth(method=lm , color="red", fill="#69b3a2", se=TRUE) +
+#     theme_ipsum())
+# 
+# require(cowplot)
+# plot_grid(
+#   p[[1]], p[[2]], p[[3]], p[[4]], p[[5]], p[[6]], p[[7]], p[[8]],
+#   ncol = 8,
+#   labels = colnames(ggdata)[2:9])
+
+# df %>% select(Year, total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers) %>%
+#   pivot_longer(., cols = c(total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers), names_to = "Var", values_to = "Val")
 
 # 
 # ggplot(slide5_data, aes(Year, total)) +
