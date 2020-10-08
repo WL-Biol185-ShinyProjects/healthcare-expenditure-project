@@ -4,6 +4,7 @@ library(tidyr)
 library(dplyr)
 library(readr)
 library(ggplot2)
+library(hrbrthemes)
 
 slide5_data <- read_csv("Table 06 Personal Health Care Expenditures.csv")
 #takes the second row and makes it the column headers as characters
@@ -59,11 +60,24 @@ slide5_data <- mutate(slide5_data, otherHealthInsurancePrograms = as.numeric(oth
 slide5_data <- mutate(slide5_data, otherThirdPartyPayers = as.numeric(otherThirdPartyPayers))
 
 #graph
-ggplot(slide5_data, aes(Year, outOfPocket)) +
-   geom_point()
+# ggplot(slide5_data, aes(Year, outOfPocket)) +
+#    geom_point()
 
-df %>% select(Year, total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers) %>%
-  pivot_longer(., cols = c(num1,num2), names_to = "Var", values_to = "Val")
+# p <- lapply(
+#   colnames(ggdata)[2:9],
+#   function(col) ggplot(ggdata, aes_string(x = 'Year', y = col)) +
+#     geom_point() +
+#     geom_smooth(method=lm , color="red", fill="#69b3a2", se=TRUE) +
+#     theme_ipsum())
+# 
+# require(cowplot)
+# plot_grid(
+#   p[[1]], p[[2]], p[[3]], p[[4]], p[[5]], p[[6]], p[[7]], p[[8]],
+#   ncol = 8,
+#   labels = colnames(ggdata)[2:9])
+
+# df %>% select(Year, total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers) %>%
+#   pivot_longer(., cols = c(total, outOfPocket, healthInsurance, privateHealthInsurance, medicare, medicaid, otherHealthInsurancePrograms, otherThirdPartyPayers), names_to = "Var", values_to = "Val")
 
 # 
 # ggplot(slide5_data, aes(Year, total)) +
