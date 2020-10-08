@@ -4,7 +4,6 @@ library(tidyr)
 library(dplyr)
 library(readr)
 library(ggplot2)
-library(hrbrthemes)
 
 slide5_data <- read_csv("Table 06 Personal Health Care Expenditures.csv")
 #takes the second row and makes it the column headers as characters
@@ -38,7 +37,7 @@ slide5_data$medicare <- gsub("$", "", slide5_data$medicare, fixed = TRUE)
 slide5_data$medicaid <- gsub("$", "", slide5_data$medicaid, fixed = TRUE)
 slide5_data$otherHealthInsurancePrograms <- gsub("$", "", slide5_data$otherHealthInsurancePrograms, fixed = TRUE)
 slide5_data$otherThirdPartyPayers <- gsub("$", "", slide5_data$otherThirdPartyPayers, fixed = TRUE)
-
+ 
 #removes all of the ","
 slide5_data$total <- gsub(",", "", slide5_data$total, fixed = TRUE)
 slide5_data$outOfPocket <- gsub(",", "", slide5_data$outOfPocket, fixed = TRUE)
@@ -50,6 +49,7 @@ slide5_data$otherHealthInsurancePrograms <- gsub(",", "", slide5_data$otherHealt
 slide5_data$otherThirdPartyPayers <- gsub(",", "", slide5_data$otherThirdPartyPayers, fixed = TRUE)
 
 #make all of the columns numeric
+slide5_data <- mutate(slide5_data, Year = as.numeric(Year))
 slide5_data <- mutate(slide5_data, total = as.numeric(total))
 slide5_data <- mutate(slide5_data, outOfPocket = as.numeric(outOfPocket))
 slide5_data <- mutate(slide5_data, healthInsurance = as.numeric(healthInsurance))
@@ -59,9 +59,18 @@ slide5_data <- mutate(slide5_data, medicaid = as.numeric(medicaid))
 slide5_data <- mutate(slide5_data, otherHealthInsurancePrograms = as.numeric(otherHealthInsurancePrograms))
 slide5_data <- mutate(slide5_data, otherThirdPartyPayers = as.numeric(otherThirdPartyPayers))
 
+tidy_slide5 <- gather(slide5_data[1:9],
+                      key = "category",
+                      value = "USD",
+                      2:9)
+
 #graph
-# ggplot(slide5_data, aes(Year, outOfPocket)) +
-#    geom_point()
+ggplot(tidy_slide5, aes(Year, USD, color = category)) +
+  geom_line()
+
+
+
+
 
 # p <- lapply(
 #   colnames(ggdata)[2:9],
