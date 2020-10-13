@@ -2,9 +2,11 @@ library(lubridate)
 library(tidyverse)
 
 #working director is set to the folder where the staet csv files are located
-setwd("/home/lawsonj21/healthcare-expenditure-project/stateCSVFiles")
 
-tables <- lapply(c("Table1PersonalHealthCareTotal.csv"),
+list.files
+#full.names = TRUE
+
+tables <- lapply(c("stateCSVFiles/Table1PersonalHealthCareTotal.csv"),
                  function(table) {
                    
                    # read in csv file
