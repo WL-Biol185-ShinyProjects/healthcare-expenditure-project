@@ -1,9 +1,10 @@
 library(lubridate)
 library(tidyverse)
 
+#working director is set to the folder where the staet csv files are located
+setwd("/home/lawsonj21/healthcare-expenditure-project/stateCSVFiles")
 
-tables <- lapply(c("Table 11 HE by state of residence per capita.csv", 
-                   "Table 12 Hospital expenditures by state per capita.csv"),
+tables <- lapply(c("Table1PersonalHealthCareTotal.csv"),
                  function(table) {
                    
                    # read in csv file
@@ -39,7 +40,7 @@ tables <- lapply(c("Table 11 HE by state of residence per capita.csv",
                  }
                 )
          
-table1 <- tables[[2]]         
+table1 <- tables[[1]]         
 
 
 tidyTables <- function(table) {
