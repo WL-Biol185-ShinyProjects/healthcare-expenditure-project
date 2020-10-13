@@ -1,12 +1,10 @@
 library(lubridate)
 library(tidyverse)
 
-#working director is set to the folder where the staet csv files are located
+#takes all of the files in our folder and keeps the full name of the files
+files <- list.files(path = "stateCSVFiles/", full.names = TRUE)
 
-list.files
-#full.names = TRUE
-
-tables <- lapply(c("stateCSVFiles/Table1PersonalHealthCareTotal.csv"),
+tables <- lapply(c(files),
                  function(table) {
                    
                    # read in csv file
