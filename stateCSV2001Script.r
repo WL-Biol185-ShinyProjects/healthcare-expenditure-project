@@ -2,7 +2,7 @@ library(lubridate)
 library(tidyverse)
 
 #takes all of the files in our folder and keeps the full name of the files
-files <- list.files(path = "stateCSVFiles", full.names = TRUE)
+files <- list.files(path = "stateCSVFiles_2001", full.names = TRUE)
 
 tables <- lapply(c(files),
                  function(table) {
@@ -16,10 +16,10 @@ tables <- lapply(c(files),
                    
                    # gather years into a column
                    # rename column, remove NA values, convert year data type to numeric, remove original year column
-                   tidyTable <- gather(data[1:25],
+                   tidyTable <- gather(data[1:15],
                                        key = "year",
                                        value = "USD",
-                                       2:25) %>%
+                                       2:15) %>%
                      rename(State = "Region/state of residence") %>%
                      filter(!is.na(USD)) %>%
                      mutate(Year = as.numeric(year)) %>%
