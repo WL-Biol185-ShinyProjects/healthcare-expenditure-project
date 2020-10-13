@@ -2,9 +2,9 @@ library(lubridate)
 library(tidyverse)
 
 #takes all of the files in our folder and keeps the full name of the files
-files <- list.files(path = "stateCSVFiles/", full.names = TRUE)
+files <- list.files(path = "stateCSVFiles", full.names = TRUE)
 
-tables <- lapply(c(files),
+tables <- lapply(c(files), USE.NAME = TRUE,
                  function(table) {
                    
                    # read in csv file
