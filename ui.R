@@ -18,3 +18,4 @@ fluidPage(
       plotOutput("distPlot")
     )
   )
+
