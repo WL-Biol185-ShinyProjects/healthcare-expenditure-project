@@ -7,21 +7,23 @@ library(shiny)
 # Define UI for application
 fluidPage(
   
+  titlePanel("Healthcare Expenditures by State"),
+  
   sidebarPanel(
     selectInput(inputId = "expenditure",
                 label = "Select expenditures:",
                 choices = names(tables),
-                multiple = TRUE,
+                multiple = TRUE
                 # selected = ""
               ),
     selectInput(inputId = "state",
-                label = "Select states",
+                label = "Select states:",
                 unique(tables$Population$State),
                 multiple = TRUE)
   ),
   mainPanel(
-    plotOutput("expenditurePlot",
-               click = "expenditurePlotClick"
+    plotOutput(outputId = "expenditurePlot"
+               # click = "expenditurePlotClick"
               ),
     tableOutput("expenditureInfo")
   )

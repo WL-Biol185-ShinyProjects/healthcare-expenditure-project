@@ -4,35 +4,20 @@ library(tidyverse)
 # Define server logic to draw plot
 function(input, output) {
   
-  output$distPlot <- renderPlot({
+  
+  output$expenditurePlot <- renderPlot({
+    expend <- input$expenditure
+    df <- tables$expend
+    ggplot(df, aes(df$Year[df$State == input$state], df$dollars[df$State == input$state])) +
+      geom_line()
     
-    output$expenditurePlot <- renderPlot({
-      # flights %>%
-      #   filter(carrier %in% input$airline) %>%
-        ggplot(tables$input, aes(Year, dollars)) +
-          geom_line()
+  })
+    
+  output$expenditureInfo <- renderTable({
+    clickEvent <- input$expenditurePlotClick
+    tables$input
+      # nearPoints(clickEvent)
       
-    })
-    
-    output$expenditureInfo <- renderDataTable({
-      clickEvent <- input$expenditurePlotClick
-      flights %>%
-        filter(carrier %in% input$airline) %>%
-        nearPoints(clickEvent)
-      
-    })
-    
   })
   
 }
-    
-    # # generate bins based on input$bins from ui.R
-    # x    <- faithful[, 2] 
-    # bins <- seq(min(x), max(x), length.out = input$bins + 1)
-    # 
-    # # draw the histogram with the specified number of bins
-    # hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    
-#   })
-#   
-# }
