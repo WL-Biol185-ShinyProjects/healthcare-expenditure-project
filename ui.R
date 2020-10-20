@@ -1,27 +1,29 @@
 library(shiny)
 # library(leaflet)
-library(nycflights13)
-
-# 
+ 
 # source("sidebar.R")
 # source("main-panel.R")
 
-# Define UI for application that draws a histogram
+# Define UI for application
 fluidPage(
   
   sidebarPanel(
-    selectInput(inputId = "airline",
-                label = "Select airlines:",
-                choices = unique(flights$carrier),
+    selectInput(inputId = "expenditure",
+                label = "Select expenditures:",
+                choices = names(tables),
                 multiple = TRUE,
-                selected = "UA"
-              )
+                # selected = ""
+              ),
+    selectInput(inputId = "state",
+                label = "Select states",
+                unique(tables$Population$State),
+                multiple = TRUE)
   ),
   mainPanel(
-    plotOutput("distancePlot",
-               click = "distancePlotClick"
+    plotOutput("expenditurePlot",
+               click = "expenditurePlotClick"
               ),
-    tableOutput("flightInfo")
+    tableOutput("expenditureInfo")
   )
 )
   

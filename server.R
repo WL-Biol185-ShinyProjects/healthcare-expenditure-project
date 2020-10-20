@@ -15,8 +15,8 @@ function(input, output) {
       
     })
     
-    output$flightInfo <- renderDataTable({
-      clickEvent <- input$distancePlotClick
+    output$expenditureInfo <- renderDataTable({
+      clickEvent <- input$expenditurePlotClick
       flights %>%
         filter(carrier %in% input$airline) %>%
         nearPoints(clickEvent)
