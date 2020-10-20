@@ -1,7 +1,7 @@
-#package(geojsonio)
+package(geojsonio)
 
 # From http://leafletjs.com/examples/choropleth/us-states.js
-states <- geojsonio::geojson_read("json/us-states.geojson", what = "sp")
+states <- geojsonio::geojson_read("us-states.geojson", what = "sp")
 
 bins <- c(0, 10, 20, 50, 100, 200, 500, 1000, Inf)
 pal <- colorBin("YlOrRd", domain = states$density, bins = bins)
