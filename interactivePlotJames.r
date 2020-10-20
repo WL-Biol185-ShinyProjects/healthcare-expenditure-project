@@ -12,6 +12,8 @@ function(input, output) {
   })
   
   output$flightInfo <- renderText({
-    "This is just text"
+    clickEvents <- input$distancePlotClick
+    flights %>%
+      filter(carrier)
   })
 }
