@@ -1,17 +1,16 @@
 library(shiny)
 library(tidyverse)
-library(nycflights13)
 
-# Define server logic required to draw a histogram
+# Define server logic to draw plot
 function(input, output) {
   
   output$distPlot <- renderPlot({
     
-    output$distancePlot <- renderPlot({
-      flights %>%
-        filter(carrier %in% input$airline) %>%
-        ggplot(aes(distance, air_time)) +
-          geom_point()
+    output$expenditurePlot <- renderPlot({
+      # flights %>%
+      #   filter(carrier %in% input$airline) %>%
+        ggplot(tables$input, aes(Year, dollars)) +
+          geom_line()
       
     })
     
