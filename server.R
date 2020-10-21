@@ -8,6 +8,10 @@ function(input, output) {
   output$expenditurePlot <- renderPlot({
     expend <- input$expenditure
     df <- tables$expend
+    # state_df <- df %>%
+    #   select(State == input$state)
+    # ggplot(state_df, aes(Year, dollars)) +
+    #   geom_line()
     ggplot(df, aes(df$Year[df$State == input$state], df$dollars[df$State == input$state])) +
       geom_line()
     
