@@ -8,6 +8,9 @@ statesGeo  <- rgdal::readOGR("states.geo.json")
 
 
 
+
+# join leaflet with our state data
+
 # Define server logic to draw plot
 function(input, output) {
   
