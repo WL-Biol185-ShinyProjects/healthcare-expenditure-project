@@ -1,5 +1,12 @@
 library(shiny)
 library(tidyverse)
+library(leaflet)
+library(rgdal)
+
+statesGeo  <- rgdal::readOGR("states.geo.json")
+
+
+
 
 # Define server logic to draw plot
 function(input, output) {
