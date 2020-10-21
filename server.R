@@ -7,34 +7,21 @@ source("stateCSV1991Script.R")
 statesGeo  <- rgdal::readOGR("states.geo.json")
 
 
-
-
-
-# join leaflet with our state data
-
-# Define server logic to draw plot
+# Define server logic to draw plot and leaflet
 function(input, output) {
   
   
-  # output$expenditurePlot <- renderPlot({
-  #   expend <- input$expenditure
-  #   df <- tables$expend
-  #   state <- toString(input$state)
-  #   state_df <- df %>%
-  #     filter(State == state)
-  #   ggplot(state_df, aes(Year, dollars)) +
-  #     geom_line()
-  #   # ggplot(df, aes(df$Year[df$State == input$state], df$dollars[df$State == input$state])) +
-  #   #   geom_line()
-  #   
-  # })
-  #   
-  # output$expenditureInfo <- renderTable({
-  #   clickEvent <- input$expenditurePlotClick
-  #   tables$input
-  #     # nearPoints(clickEvent)
-  #     
-  # })
+  output$expenditurePlot <- renderPlot({
+    df <- tables[[input$expenditure]] %>%
+      filter(State == input$state)
+    ggplot(df, aes(Year, dollars)) +
+      geom_line()
+  })
+
+  output$expenditureInfo <- renderTable({
+    clickEvent <- input$expenditurePlotClick
+    # nearPoints(clickEvent)
+  })
   
   output$leafletPlot <- renderLeaflet({
     statesGeo@data <- left_join(statesGeo@data, tables[[input$expenditure]], 
@@ -45,6 +32,7 @@ function(input, output) {
     # domain - column on table to shade the states
     pal <- colorBin("YlOrRd", domain = tables[[input$expenditure]]$dollars, bins = bins)
     leaflet(statesGeo) %>%
+      setView(-96, 37.8, 4) %>%
       addTiles() %>%
       addPolygons(
         fillColor = ~pal(dollars),
