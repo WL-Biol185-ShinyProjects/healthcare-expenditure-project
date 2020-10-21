@@ -1,7 +1,7 @@
 library(tidyverse)
 library(leaflet)
 library(rgdal)
-leafletdf <- read_csv("leafletdf.csv")
+#leafletdf <- read_csv("leafletdf.csv")
 state_names<- read_csv("states.csv")
 statesGeo  <- rgdal::readOGR("states.geo.json")
 

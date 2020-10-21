@@ -52,7 +52,17 @@ function(input, output) {
         opacity = 1,
         color = "white",
         dashArray = "3",
-        fillOpacity = 0.7)
+        fillOpacity = 0.7
+        
+        ) %>%
+      
+      addLegend("bottomright",
+        pal          = pal, 
+        values       = ~(dollars), 
+        opacity      = 0.8,
+        #might need to adjust the amount in billions depending on the bins and on the file
+        title        = "Amount in Billions",
+        labFormat    = labelFormat(suffix = "$"))
     
   })
   
