@@ -1,5 +1,5 @@
 library(shiny)
-# library(leaflet)
+library(leaflet)
  
 # source("sidebar.R")
 # source("main-panel.R")
@@ -18,14 +18,16 @@ fluidPage(
               ),
     selectInput(inputId = "state",
                 label = "Select states:",
-                unique(tables$Population$State),
+                choices = unique(tables$Population$State),
                 multiple = TRUE)
   ),
   mainPanel(
     plotOutput(outputId = "expenditurePlot"
                # click = "expenditurePlotClick"
               ),
+    leafletOutput(outputId = "leafletPlot"),
     tableOutput("expenditureInfo")
+    
   )
 )
   
