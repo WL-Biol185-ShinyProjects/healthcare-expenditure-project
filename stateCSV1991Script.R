@@ -39,13 +39,7 @@ tables <- lapply(c(files),
                    
                  }
                 )
-         
-table1 <- tables[[1]]
-# l <- as.list(a)
-l <- as.list(tables[1])
-names(tables[[1]]) <- c("OtherHealth")
-names(l) <- c("healthcare")
-tables$OtherHealth
+
 
 names(tables) <- c("TotalOtherResidentalAndPersonalHealthcare", 
                    "PersonalHealthcarePerCapita",
