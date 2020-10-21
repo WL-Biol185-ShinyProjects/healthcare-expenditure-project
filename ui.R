@@ -13,13 +13,14 @@ fluidPage(
     selectInput(inputId = "expenditure",
                 label = "Select expenditures:",
                 choices = names(tables),
-                multiple = TRUE
-                # selected = ""
+                multiple = TRUE,
+                selected = "Population"
               ),
     selectInput(inputId = "state",
                 label = "Select states:",
                 choices = unique(tables$Population$State),
-                multiple = TRUE)
+                multiple = TRUE,
+                selected = "Virginia")
   ),
   mainPanel(
     plotOutput(outputId = "expenditurePlot"
