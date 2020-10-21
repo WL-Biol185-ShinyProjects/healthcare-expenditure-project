@@ -1,6 +1,9 @@
 library(shiny)
 library(tidyverse)
 
+
+# join leaflet with our state data
+
 # Define server logic to draw plot
 function(input, output) {
   
