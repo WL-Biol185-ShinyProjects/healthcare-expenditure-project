@@ -14,7 +14,7 @@ function(input, output) {
   
   output$expenditurePlot <- renderPlot({
     df <- tables[[input$expenditure]] %>%
-      filter(State == input$state)
+      filter(State %in% input$state)
     ggplot(df, aes(Year, dollars)) +
       geom_line()
   })
