@@ -16,7 +16,7 @@ function(input, output) {
     df <- tables[[input$expenditure]] %>%
       filter(State %in% input$state)
     ggplot(df, aes(Year, dollars)) +
-      geom_line()
+      geom_line(aes(color = State))
   })
 
   output$expenditureInfo <- renderTable({
