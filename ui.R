@@ -7,6 +7,25 @@ library(leaflet)
 # Define UI for application
 fluidPage(
   
+  dashboardPage(skin = "black",
+                dashboardHeader(title = "Healthcare Expenditures in the United States"),
+                dashboardSidebar(
+                  sidebarMenu(
+                    menuItem("Gender", tabName = "genderTab"),
+                    menuItem("Age", tabName = "ageTab"),
+                    menuItem("States", tabName = "statesTab")
+                  )
+                ),
+                
+  dashboardBody(
+    tabItems(
+      tabItem(tabName = "genderTab", genderTab),
+      tabItem(tabName = "ageTab", ageTab),
+      tabItem(tabName = "statesTab", statesTab)
+    )
+  )
+  
+  
   titlePanel("Healthcare Expenditures by State"),
   
   sidebarPanel(
@@ -31,20 +50,5 @@ fluidPage(
     
   )
 )
-  
-  
-  
-  
-  
-  # # Application title
-  # titlePanel("Old Faithful Geyser Data"),
-  # 
-  # # Sidebar with a slider input for number of bins 
-  # sidebarLayout(sidebar, main_panel),
-  #   
-  #   # Show a plot of the generated distribution
-  #   mainPanel(
-  #     plotOutput("distPlot")
-  #   )
-  # )
+)
 
