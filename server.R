@@ -38,6 +38,8 @@ function(input, output) {
       addPolygons(
         fillColor = ~pal(dollars),
         weight = 2,
+        #work on the label functionality
+        label = h2(c(tables[[input$State]])),
         opacity = 1,
         color = "white",
         dashArray = "3",
