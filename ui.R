@@ -18,12 +18,15 @@ dashboardPage(
   dashboardBody(
     tabItems(
       tabItem(tabName = "genderTab", fluidRow(
+        h2("This is the gender tab")
         
       )),
       tabItem(tabName = "ageTab", fluidRow(
+        h2("This is the age tab")
         
       )),
       tabItem(tabName = "statesTab", fluidRow(
+        h2("This is the states tab"),
         selectInput(inputId = "expenditure",
                     label = "Select expenditures:",
                     choices = names(tables),
