@@ -2,6 +2,7 @@ library(shiny)
 library(tidyverse)
 library(leaflet)
 library(rgdal)
+#library(viridis)
 
 source("stateCSV1991Script.R")
 statesGeo  <- rgdal::readOGR("states.geo.json")
@@ -40,10 +41,10 @@ function(input, output) {
     statesGeo@data <- left_join(statesGeo@data, tables[[input$expenditure]], 
                                 by = c("NAME" = "State"))
     # yellow to red
-    bins <- c(0, 10, 20, 50, 100, 200, 500, 1000, Inf)
+    bins <- c(0, 100, 500, 1000, 2000, 4000, 8000, Inf)
     # palette is yellow or red - look at doc for other choices
     # domain - column on table to shade the states
-    pal <- colorBin("YlOrRd", domain = tables[[input$expenditure]]$dollars, bins = bins)
+    pal <- colorBin("Reds", domain = tables[[input$expenditure]]$dollars, bins = bins)
     leaflet(statesGeo) %>%
       addTiles() %>%
       addPolygons(
