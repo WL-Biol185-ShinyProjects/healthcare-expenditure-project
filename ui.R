@@ -10,13 +10,35 @@ dashboardPage(
   dashboardHeader(title = "HeathcareExpenditures"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("States", tabName = "statesTab", icon = icon("th"))
+      menuItem("States", tabName = "statesTab", icon = icon("map-marker-alt")),
+      menuItem("Gender", tabName = "genderTab", icon = icon("user-friends")),
+      menuItem("Age", tabName = "ageTab", icon = icon("birthday-cake"))
     )
   ),
   dashboardBody(
     tabItems(
       tabItem(tabName = "genderTab", fluidRow(
         
+      )),
+      tabItem(tabName = "ageTab", fluidRow(
+        
+      )),
+      tabItem(tabName = "statesTab", fluidRow(
+        selectInput(inputId = "expenditure",
+                    label = "Select expenditures:",
+                    choices = names(tables),
+                    multiple = TRUE,
+                    selected = "Population"
+                  ),
+        selectInput(inputId = "state",
+                    label = "Select states:",
+                    choices = unique(tables$Population$State),
+                    multiple = TRUE,
+                    selected = "Virginia"),
+        plotOutput(outputId = "expenditurePlot"
+                   # click = "expenditurePlotClick"
+                  ),
+        leafletOutput(outputId = "leafletPlot")
       ))
     )
     
