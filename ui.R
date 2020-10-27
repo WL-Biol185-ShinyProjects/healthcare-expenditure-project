@@ -40,13 +40,13 @@ dashboardPage(skin = "green",
         
         selectInput(inputId = "expenditure_gender",
                     label = "Select expenditure:",
-                    choices = names(tables_age_2),
+                    choices = names(genders),
                     multiple = TRUE,
                     selected = "OutOfPocketSpendingPerCapita"
         ),
         selectInput(inputId = "gender",
                     label = "Select gender(s):",
-                    choices = unique(tables_age_2$OutOfPocketSpendingPerCapita$group),
+                    choices = unique(genders$OutOfPocketSpendingPerCapita$group),
                     multiple = TRUE,
                     selected = "total"
         ),
