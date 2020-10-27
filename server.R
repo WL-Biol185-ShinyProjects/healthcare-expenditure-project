@@ -57,6 +57,12 @@ function(input, output) {
     
   })
   
+  output$genderPlot <- renderPlot({
+    
+    
+    
+  })
+  
 }
 
 

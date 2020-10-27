@@ -30,7 +30,20 @@ dashboardPage(skin = "green",
         
       )),
       tabItem(tabName = "ageTab", fluidRow(
-        h2("This is the age tab")
+        h2("This is the age tab"),
+        selectInput(inputId = "expenditure_gender",
+                    label = "Select expenditure:",
+                    choices = names(tables_age_2),
+                    multiple = TRUE,
+                    selected = "OutOfPocketSpendingPerCapita"
+        ),
+        selectInput(inputId = "gender",
+                    label = "Select gender(s):",
+                    choices = unique(tables_age_2$OutOfPocketSpendingPerCapita$group),
+                    multiple = TRUE,
+                    selected = "total"
+        ),
+        plotOutput(outputId = "genderPlot")
         
       )),
       tabItem(tabName = "statesTab", fluidRow(
