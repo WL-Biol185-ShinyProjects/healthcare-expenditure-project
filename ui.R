@@ -24,16 +24,20 @@ dashboardPage(skin = "green",
         br(),
         
         img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right")
+        br(),
         
       )),
       
       
       tabItem(tabName = "genderTab", fluidRow(
-        h2("This is the gender tab")
+        h1(strong("This is the gender tab"), style = "color: #4DD217", align = "center"),
+        br(),
         
       )),
       tabItem(tabName = "ageTab", fluidRow(
-        h2("This is the age tab"),
+        h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
+        br(),
+        
         selectInput(inputId = "expenditure_gender",
                     label = "Select expenditure:",
                     choices = names(tables_age_2),
