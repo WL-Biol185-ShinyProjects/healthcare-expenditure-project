@@ -9,7 +9,7 @@ library(ggplot2)
 files_age <- list.files(path = "AgeGender1", full.names = TRUE)
 files_age_2 <- list.files(path = "AgeGender2", full.names = TRUE)
 
-tables_age_2 <- lapply(c(files_age_2),
+tables_age <- lapply(c(files_age),
                        function(table) {
                          
                          # read in csv file
