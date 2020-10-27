@@ -5,38 +5,51 @@ library(dplyr)
 library(readr)
 library(ggplot2)
 
-slide4_data <- read_csv("Table 7 personal health care per capita AGE GENDER.csv")
 
-# this line is setting the names of columns equal to the data in the third row which contains the years
-names(slide4_data) <- lapply(slide4_data[3, ], as.character)
+files_age <- list.files(path = "AgeGender1", full.names = TRUE)
 
-# this line removes rows 1:3
-slide4 <- slide4_data[-1:-3,]
+tables_age <- lapply(c(files_age),
+                     function(table) {
+                       
+                       # read in csv file
+                       data <- read_csv(table)
+                       
+                       # setting proper column names and removing unnecessary rows
+                       names(data) <- lapply(data[3, ], as.character)
+                       data <- data[-1:-3,]
+                       data <- data[1:8]
+                       
+                       # gathering data to ensure tidy form, converting data types of year from string to numeric
+                       tidyTable <- gather(data[1:8],
+                                           key = "year",
+                                           value = "USD",
+                                           2:8) %>%
+                         rename(ageGroup = "Age group") %>%
+                         filter(!is.na(USD)) %>%
+                         mutate(Year = as.numeric(year))
+                       
+                       # removing all commas in data table
+                       tidyTable$USD <- gsub(",", "", tidyTable$USD, fixed = TRUE)
+                       
+                       # converts data type from string to numeric for USD column
+                       tidyTable <- tidyTable %>%
+                         mutate(USD = as.numeric(USD)) %>%
+                         select(-(year))
+                       
+                       
+                     }
+)
 
-# removes unwanted client
-slide4 <- slide4[1:8]
-
-
-#the gather function should only take the first 8
-tidy_slide4 <- gather(slide4[1:8],
-                      key = "year",
-                      value = "USD",
-                      2:8) %>%
-  rename(ageGroup = "Age group") %>%
-  #filters out rows with "NA"
-  filter(!is.na(USD)) %>%
-  #converts years to numeric
-  mutate(Year = as.numeric(year))
-
-#removes all of the commas and replaces it with a "" character
-tidy_slide4$USD <- gsub(",", "", tidy_slide4$USD, fixed = TRUE)
-
-#converts string USD into int USD
-tidy_slide4 <- tidy_slide4 %>%
-  mutate(USD = as.numeric(USD)) %>%
-  select(-(year))
-  
-
+# setting up names for each table
+names(tables_age) <- c("TotalPersonalHealthCare",
+                       "TotalMedicareSpending",
+                       "TotalMedicaidSpending",
+                       "PrivateHealthInsuranceSpending",
+                       "OutOfPocketSpending",
+                       "OtherPayersAndProgramsSpending"
+)
+                   
+                   
 total <- slide4[-9:-25,]
 
 total_2 <- gather(total[1:8],
@@ -114,3 +127,40 @@ age_females <- age_total %>%
 
 ggplot(age_females, aes(year, USD, color = ageGroup)) +
   geom_line()
+
+
+
+
+# 
+# slide4_data <- read_csv("Table 7 personal health care per capita AGE GENDER.csv")
+# 
+# # this line is setting the names of columns equal to the data in the third row which contains the years
+# names(slide4_data) <- lapply(slide4_data[3, ], as.character)
+# 
+# # this line removes rows 1:3
+# slide4 <- slide4_data[-1:-3,]
+# 
+# # removes unwanted client
+# slide4 <- slide4[1:8]
+# 
+# 
+# #the gather function should only take the first 8
+# tidy_slide4 <- gather(slide4[1:8],
+#                       key = "year",
+#                       value = "USD",
+#                       2:8) %>%
+#   rename(ageGroup = "Age group") %>%
+#   #filters out rows with "NA"
+#   filter(!is.na(USD)) %>%
+#   #converts years to numeric
+#   mutate(Year = as.numeric(year))
+# 
+# #removes all of the commas and replaces it with a "" character
+# tidy_slide4$USD <- gsub(",", "", tidy_slide4$USD, fixed = TRUE)
+# 
+# #converts string USD into int USD
+# tidy_slide4 <- tidy_slide4 %>%
+#   mutate(USD = as.numeric(USD)) %>%
+#   select(-(year))
+#   
+
