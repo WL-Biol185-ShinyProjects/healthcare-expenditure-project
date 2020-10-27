@@ -10,6 +10,7 @@ dashboardPage(skin = "green",
   dashboardHeader(title = "Heathcare Expenditures in the United States", titleWidth = 600),
   dashboardSidebar(width = 240,
     sidebarMenu(
+      menuItem("Introduction", tabName = "introductionTab", icon = icon("info")),
       menuItem("States", tabName = "statesTab", icon = icon("map-marker-alt")),
       menuItem("Gender", tabName = "genderTab", icon = icon("user-friends")),
       menuItem("Age", tabName = "ageTab", icon = icon("birthday-cake"))
@@ -17,6 +18,13 @@ dashboardPage(skin = "green",
   ),
   dashboardBody(
     tabItems(
+      
+      tabItem(tabName = "introductionTab", fluidRow(
+        h2("This is the introduction tab")
+        
+      )),
+      
+      
       tabItem(tabName = "genderTab", fluidRow(
         h2("This is the gender tab")
         
