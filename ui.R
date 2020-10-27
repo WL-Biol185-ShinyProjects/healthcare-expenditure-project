@@ -20,7 +20,7 @@ dashboardPage(skin = "green",
     tabItems(
       
       tabItem(tabName = "introductionTab", fluidRow(
-        h2("This is the introduction tab")
+        h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center")
         
       )),
       
