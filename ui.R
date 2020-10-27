@@ -23,7 +23,7 @@ dashboardPage(skin = "green",
         h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center"),
         br(),
         
-        img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right")
+        img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right"),
         br(),
         
       )),
