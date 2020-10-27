@@ -57,6 +57,14 @@ function(input, output) {
     
   })
   
+  output$genderPlot <- renderPlot({
+    df_gender <- tables_age_2[[input$expenditure_gender]] %>%
+      filter(group %in% input$gender)
+    ggplot(df_gender, aes(year, USD, color = group)) +
+      geom_line()
+
+  })
+  
 }
 
 
