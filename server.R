@@ -48,8 +48,8 @@ function(input, output) {
         ) %>%
       
       addLegend("bottomright",
-        pal          = pal, 
-        values       = ~(dollars), 
+        pal          = pal,
+        values       = ~(dollars),
         opacity      = 0.8,
         #might need to adjust the amount in billions depending on the bins and on the file
         title        = "Amount in Billions",
