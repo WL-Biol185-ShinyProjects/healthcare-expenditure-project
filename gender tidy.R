@@ -3,9 +3,6 @@ library(tidyverse)
 library(tidyr)
 library(dplyr)
 library(readr)
-library(ggplot2)
-
-
 
 
 files_gender <- list.files(path = "AgeGender1", full.names = TRUE)
