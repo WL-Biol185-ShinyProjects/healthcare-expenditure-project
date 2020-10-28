@@ -177,4 +177,4 @@ names(tables_age_2) <- c("OutOfPocketSpendingPerCapita",
 
 
 # to join lists of tables
-genders <- c(tables_gender, tables_gender_2)
+ages <- c(tables_age, tables_age_2)

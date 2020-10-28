@@ -65,6 +65,14 @@ function(input, output) {
 
   })
   
+  output$agePlot <- renderPlot({
+    df_age <- ages[[input$expenditure_age]] %>%
+      filter(ageGroup %in% input$age)
+    ggplot(df_age, aes(year, USD, color = ageGroup)) +
+      geom_line()
+    
+  })
+  
 }
 
 
