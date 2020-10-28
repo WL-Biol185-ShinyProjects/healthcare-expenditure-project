@@ -8,10 +8,10 @@ library(ggplot2)
 
 
 
-files_age <- list.files(path = "AgeGender1", full.names = TRUE)
-files_age_2 <- list.files(path = "AgeGender2", full.names = TRUE)
+files_gender <- list.files(path = "AgeGender1", full.names = TRUE)
+files_gender_2 <- list.files(path = "AgeGender2", full.names = TRUE)
 
-tables_age <- lapply(c(files_age),
+tables_gender <- lapply(c(files_gender),
                        function(table) {
                          
                          # read in csv file
@@ -105,7 +105,7 @@ tables_age <- lapply(c(files_age),
                        }
 )
 
-tables_age_2 <- lapply(c(files_age_2),
+tables_gender_2 <- lapply(c(files_gender_2),
                      function(table) {
                        
                        # read in csv file
@@ -199,7 +199,7 @@ tables_age_2 <- lapply(c(files_age_2),
 )
 
 # setting up names for each table
-names(tables_age) <- c("TotalPersonalHealthCare",
+names(tables_gender) <- c("TotalPersonalHealthCare",
                        "TotalMedicareSpending",
                        "TotalMedicaidSpending",
                        "PrivateHealthInsuranceSpending",
@@ -207,13 +207,13 @@ names(tables_age) <- c("TotalPersonalHealthCare",
                        "OtherPayersAndProgramsSpending"
 )
 
-names(tables_age_2) <- c("OutOfPocketSpendingPerCapita",
+names(tables_gender_2) <- c("OutOfPocketSpendingPerCapita",
                          "OtherPayersAndProgramsSpendingPerCapita",
                          "PersonalHealthCarePerCapita")
 
 
 # to join lists of tables
-genders <- c(tables_age, tables_age_2)
+genders <- c(tables_gender, tables_gender_2)
                    
 
 

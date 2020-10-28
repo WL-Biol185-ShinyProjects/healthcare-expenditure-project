@@ -33,15 +33,10 @@ dashboardPage(skin = "green",
         h1(strong("This is the gender tab"), style = "color: #4DD217", align = "center"),
         br(),
         
-      )),
-      tabItem(tabName = "ageTab", fluidRow(
-        h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
-        br(),
-        
         selectInput(inputId = "expenditure_gender",
                     label = "Select expenditure:",
                     choices = names(genders),
-                    multiple = TRUE,
+                    multiple = FALSE,
                     selected = "OutOfPocketSpendingPerCapita"
         ),
         selectInput(inputId = "gender",
@@ -51,6 +46,13 @@ dashboardPage(skin = "green",
                     selected = "total"
         ),
         plotOutput(outputId = "genderPlot")
+        
+        
+      )),
+      tabItem(tabName = "ageTab", fluidRow(
+        h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
+        br(),
+        
         
       )),
       tabItem(tabName = "statesTab", fluidRow(
@@ -62,7 +64,7 @@ dashboardPage(skin = "green",
                     selected = "Population"
                   ),
         selectInput(inputId = "state",
-                    label = "Select states:",
+                    label = "Select state(s)/region(s):",
                     choices = unique(tables$Population$State),
                     multiple = TRUE,
                     selected = "Virginia"),
