@@ -17,86 +17,94 @@ dashboardPage(skin = "green",
       menuItem("Projections", tabName = "projectionsTab", icon = icon("chart-line"))
     )
   ),
+  
   dashboardBody(
     tabItems(
       
       tabItem(tabName = "introductionTab", fluidRow(
-        h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center"),
-        br(),
-        
-        img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right"),
-        br(),
-        
-      )),
+         h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center"),
+         br(),
+         
+         img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right"),
+         br(),
+         
+       )),
+       
+       
+       tabItem(tabName = "genderTab", fluidRow(
+         h1(strong("This is the gender tab"), style = "color: #4DD217", align = "center"),
+         br(),
+         
+         selectInput(inputId = "expenditure_gender",
+                     label = "Select expenditure:",
+                     choices = names(genders),
+                     multiple = FALSE,
+                     selected = "OutOfPocketSpendingPerCapita"
+         ),
+         selectInput(inputId = "gender",
+                     label = "Select gender(s):",
+                     choices = unique(genders$OutOfPocketSpendingPerCapita$group),
+                     multiple = TRUE,
+                     selected = "total"
+         ),
+         plotOutput(outputId = "genderPlot")
+         
+         
+       )),
       
+       tabItem(tabName = "ageTab", fluidRow(
+         h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
+         br(),
+         
+         selectInput(inputId = "expenditure_age",
+                     label = "Select expenditure:",
+                     choices = names(ages),
+                     multiple = FALSE,
+                     selected = "OutOfPocketSpendingPerCapita"
+                     ),
+         selectInput(inputId = "age",
+                     label = "Select age group(s):",
+                     choices = unique(ages$TotalPersonalHealthCare$ageGroup),
+                     multiple = TRUE,
+                     selected = "0-18"
+                     ),
+         plotOutput(outputId = "agePlot")
+        
+       )),
       
-      tabItem(tabName = "genderTab", fluidRow(
-        h1(strong("This is the gender tab"), style = "color: #4DD217", align = "center"),
-        br(),
-        
-        selectInput(inputId = "expenditure_gender",
-                    label = "Select expenditure:",
-                    choices = names(genders),
-                    multiple = FALSE,
-                    selected = "OutOfPocketSpendingPerCapita"
-        ),
-        selectInput(inputId = "gender",
-                    label = "Select gender(s):",
-                    choices = unique(genders$OutOfPocketSpendingPerCapita$group),
-                    multiple = TRUE,
-                    selected = "total"
-        ),
-        plotOutput(outputId = "genderPlot")
-        
-        
-      )),
-      tabItem(tabName = "ageTab", fluidRow(
-        h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
-        br(),
-        
-        selectInput(inputId = "expenditure_age",
-                    label = "Select expenditure:",
-                    choices = names(ages),
-                    multiple = FALSE,
-                    selected = "OutOfPocketSpendingPerCapita"
-                    ),
-        selectInput(inputId = "age",
-                    label = "Select age group(s):",
-                    choices = unique(ages$TotalPersonalHealthCare$ageGroup),
-                    multiple = TRUE,
-                    selected = "0-18"
-                    ),
-        plotOutput(outputId = "agePlot")
-        
-        
-      )),
-      tabItem(tabName = "statesTab", fluidRow(
-        h2("This is the states tab"),
-        selectInput(inputId = "expenditure",
-                    label = "Select expenditures:",
-                    choices = names(tables),
-                    multiple = TRUE,
-                    selected = "Population"
-                    ),
-        selectInput(inputId = "state",
-                    label = "Select state(s)/region(s):",
-                    choices = unique(tables$Population$State),
-                    multiple = TRUE,
-                    selected = "Virginia"
-                    ),
-        plotOutput(outputId = "expenditurePlot"
-                   # click = "expenditurePlotClick"
-                  ),
-        leafletOutput(outputId = "leafletPlot")
-        
-        
-        
-        # tabItem(tabName = "projectionsTab", fluidRow(
-        #   h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
-        #   br(),
+       tabItem(tabName = "statesTab", fluidRow(
+         h2("This is the states tab"),
+         selectInput(inputId = "expenditure",
+                     label = "Select expenditures:",
+                     choices = names(tables),
+                     multiple = TRUE,
+                     selected = "Population"
+                     ),
+         selectInput(inputId = "state",
+                     label = "Select state(s)/region(s):",
+                     choices = unique(tables$Population$State),
+                     multiple = TRUE,
+                     selected = "Virginia"
+                     ),
+         plotOutput(outputId = "expenditurePlot"
+                    # click = "expenditurePlotClick"
+                   ),
+         leafletOutput(outputId = "leafletPlot")
+       )),
+      
+         
+       tabItem(tabName = "projectionsTab", fluidRow(
+         h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
+         br(),
           
+<<<<<<< HEAD
         ))
       ))
+=======
+       ))
+>>>>>>> 5bd73497ab4960b703409b2bd7a8cc621e4ea006
     )
+  )  
+)
 
 
