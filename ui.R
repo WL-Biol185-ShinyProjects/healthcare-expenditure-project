@@ -96,15 +96,11 @@ dashboardPage(skin = "green",
        tabItem(tabName = "projectionsTab", fluidRow(
          h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
          br(),
-          
-<<<<<<< HEAD
-        ))
-      ))
-=======
-       ))
->>>>>>> 5bd73497ab4960b703409b2bd7a8cc621e4ea006
+       
+         ))
     )
-  )  
-)
+  )
+)  
+
 
 
