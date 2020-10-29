@@ -14,7 +14,7 @@ dashboardPage(skin = "green",
       menuItem("States", tabName = "statesTab", icon = icon("map-marker-alt")),
       menuItem("Gender", tabName = "genderTab", icon = icon("user-friends")),
       menuItem("Age", tabName = "ageTab", icon = icon("birthday-cake")),
-      menuItem("Projections", tabName = "projectionsTab", icon = icon("birthday-cake"))
+      menuItem("Projections", tabName = "projectionsTab", icon = icon("chart-line"))
     )
   ),
   dashboardBody(
