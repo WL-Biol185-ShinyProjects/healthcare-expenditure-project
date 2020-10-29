@@ -5,6 +5,10 @@ library(rgdal)
 #library(viridis)
 
 source("stateCSV1991Script.R")
+source("stateCSV2001Script.r")
+source("stateCSV1991Script.R")
+
+
 statesGeo  <- rgdal::readOGR("states.geo.json")
 
 

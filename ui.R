@@ -13,7 +13,8 @@ dashboardPage(skin = "green",
       menuItem("Introduction", tabName = "introductionTab", icon = icon("info")),
       menuItem("States", tabName = "statesTab", icon = icon("map-marker-alt")),
       menuItem("Gender", tabName = "genderTab", icon = icon("user-friends")),
-      menuItem("Age", tabName = "ageTab", icon = icon("birthday-cake"))
+      menuItem("Age", tabName = "ageTab", icon = icon("birthday-cake")),
+      menuItem("Projections", tabName = "projectionsTab", icon = icon("birthday-cake"))
     )
   ),
   dashboardBody(
@@ -85,7 +86,15 @@ dashboardPage(skin = "green",
         plotOutput(outputId = "expenditurePlot"
                    # click = "expenditurePlotClick"
                   ),
-        leafletOutput(outputId = "leafletPlot")
+        leafletOutput(outputId = "leafletPlot"),
+        
+        
+        
+        tabItem(tabName = "projectionsTab", fluidRow(
+          h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
+          br(),
+          
+        )),
       ))
     )
     
