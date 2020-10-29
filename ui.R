@@ -95,7 +95,7 @@ dashboardPage(skin = "green",
         #   h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
         #   br(),
           
-        )),
+        ))
       ))
     )
 
