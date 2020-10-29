@@ -2,8 +2,11 @@ library(shiny)
 library(leaflet)
 library(shinydashboard)
  
-# source("sidebar.R")
-# source("main-panel.R")
+source("ui.R")
+source("stateCSV1991Script.R")
+source("stateCSV2001Script.r")
+source("age_tidy.R")
+source("gender_tidy.R")
 
 # Define UI for application
 dashboardPage(skin = "green",
