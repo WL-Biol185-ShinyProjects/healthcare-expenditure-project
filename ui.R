@@ -59,13 +59,13 @@ dashboardPage(skin = "green",
                     choices = names(ages),
                     multiple = FALSE,
                     selected = "OutOfPocketSpendingPerCapita"
-        ),
+                    ),
         selectInput(inputId = "age",
                     label = "Select age group(s):",
                     choices = unique(ages$TotalPersonalHealthCare$ageGroup),
                     multiple = TRUE,
                     selected = "0-18"
-        ),
+                    ),
         plotOutput(outputId = "agePlot")
         
         
@@ -77,27 +77,26 @@ dashboardPage(skin = "green",
                     choices = names(tables),
                     multiple = TRUE,
                     selected = "Population"
-                  ),
+                    ),
         selectInput(inputId = "state",
                     label = "Select state(s)/region(s):",
                     choices = unique(tables$Population$State),
                     multiple = TRUE,
-                    selected = "Virginia"),
+                    selected = "Virginia"
+                    ),
         plotOutput(outputId = "expenditurePlot"
                    # click = "expenditurePlotClick"
                   ),
-        leafletOutput(outputId = "leafletPlot"),
+        leafletOutput(outputId = "leafletPlot")
         
         
         
-        tabItem(tabName = "projectionsTab", fluidRow(
-          h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
-          br(),
+        # tabItem(tabName = "projectionsTab", fluidRow(
+        #   h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
+        #   br(),
           
         )),
       ))
     )
-    
-  )
-)
+
 

@@ -6,7 +6,8 @@ library(rgdal)
 
 source("stateCSV1991Script.R")
 source("stateCSV2001Script.r")
-source("stateCSV1991Script.R")
+source("age_tidy.R")
+source("gender_tidy.R")
 
 
 statesGeo  <- rgdal::readOGR("states.geo.json")
