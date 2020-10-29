@@ -91,8 +91,8 @@ dashboardPage(skin = "green",
                      ),
          plotOutput(outputId = "expenditurePlot"
                     # click = "expenditurePlotClick"
-                   ),
-         leafletOutput(outputId = "leafletPlot")
+                   )
+         #leafletOutput(outputId = "leafletPlot")
        )),
       
          
