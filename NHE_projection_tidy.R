@@ -15,4 +15,13 @@ NHE_tidy$USD <- gsub("$", "", NHE_tidy$USD, fixed = TRUE)
 NHE_tidy <- NHE_tidy %>%
   mutate(USD = as.numeric(USD),
          year = as.numeric(year)
-  )
+  ) %>%
+  rename(Expenditure = "Type of Expenditure (billions $)")
+
+## test plot
+
+# NHE_test <- NHE_tidy %>%
+#   filter(Expenditure == "National Health Expenditures")
+# 
+# ggplot(NHE_test, aes(year, USD)) +
+#   geom_line()

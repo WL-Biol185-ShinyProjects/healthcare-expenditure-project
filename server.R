@@ -79,6 +79,14 @@ function(input, output) {
     
   })
   
+  output$projectionsPlot <- renderPlot({
+    df_projection <- NHE_tidy %>%
+      filter(Expenditure %in% input$projection)
+    ggplot(df_projection, aes(year, USD)) +
+      geom_line(aes(color = Expenditure))
+    
+  })
+  
 }
 
 

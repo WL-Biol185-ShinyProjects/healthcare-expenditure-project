@@ -99,6 +99,13 @@ dashboardPage(skin = "green",
        tabItem(tabName = "projectionsTab", fluidRow(
          h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
          br(),
+         selectInput(inputId = "projection",
+                     label = "Select expenditure:",
+                     choices = unique(NHE_tidy$Expenditure),
+                     multiple = TRUE,
+                     selected = "National Health Expenditures"
+                    ),
+         plotOutput(outputId = "projectionsPlot")
        
          ))
     )
