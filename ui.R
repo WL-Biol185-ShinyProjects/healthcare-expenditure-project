@@ -30,7 +30,7 @@ dashboardPage(skin = "green",
          br(),
          
          img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right"),
-         br(),
+         br()
          
        )),
        
