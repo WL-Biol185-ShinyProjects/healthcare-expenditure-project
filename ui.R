@@ -57,22 +57,22 @@ dashboardPage(skin = "green",
        )),
       
        tabItem(tabName = "ageTab", fluidRow(
-         # h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
-         # br(),
-         # 
-         # selectInput(inputId = "expenditure_age",
-         #             label = "Select expenditure:",
-         #             choices = names(ages),
-         #             multiple = FALSE,
-         #             selected = "OutOfPocketSpendingPerCapita"
-         #             ),
-         # selectInput(inputId = "age",
-         #             label = "Select age group(s):",
-         #             choices = unique(ages$TotalPersonalHealthCare$ageGroup),
-         #             multiple = TRUE,
-         #             selected = "0-18"
-         #             ),
-         # plotOutput(outputId = "agePlot")
+         h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
+         br(),
+
+         selectInput(inputId = "expenditure_age",
+                     label = "Select expenditure:",
+                     choices = names(ages),
+                     multiple = FALSE,
+                     selected = "OutOfPocketSpendingPerCapita"
+                     ),
+         selectInput(inputId = "age",
+                     label = "Select age group(s):",
+                     choices = unique(ages$TotalPersonalHealthCare$ageGroup),
+                     multiple = TRUE,
+                     selected = "0-18"
+                     ),
+         plotOutput(outputId = "agePlot")
         
        )),
       
