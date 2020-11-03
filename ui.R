@@ -37,7 +37,8 @@ dashboardPage(skin = "green",
        )),
       
       tabItem(tabName = "statesTab", fluidRow(
-        h2("This is the states tab"),
+        h1(strong("States Tab"), style = "color: #4DD217", align = "center"),
+        h3(strong("In this tab, you can examine relationships between different expenditures compared with different states/regions")),
         selectInput(inputId = "expenditure",
                     label = "Select expenditures:",
                     choices = names(tables),
@@ -58,7 +59,8 @@ dashboardPage(skin = "green",
        
        
        tabItem(tabName = "genderTab", fluidRow(
-         h1(strong("This is the gender tab"), style = "color: #4DD217", align = "center"),
+         h1(strong("Gender Tab"), style = "color: #4DD217", align = "center"),
+         h3(strong("In this tab, you can examine relationships between different expenditures compared with different genders")),
          br(),
          
          selectInput(inputId = "expenditure_gender",
@@ -79,7 +81,8 @@ dashboardPage(skin = "green",
        )),
       
        tabItem(tabName = "ageTab", fluidRow(
-         h1(strong("This is the age tab"), style = "color: #4DD217", align = "center"),
+         h1(strong("Age Tab"), style = "color: #4DD217", align = "center"),
+         h3(strong("In this tab, you can examine relationships between different expenditures compared with different age groups")),
          br(),
 
          selectInput(inputId = "expenditure_age",
@@ -99,7 +102,8 @@ dashboardPage(skin = "green",
        )),
          
        tabItem(tabName = "projectionsTab", fluidRow(
-         h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
+         h1(strong("Projections Tab"), style = "color: #4DD217", align = "center"),
+         h3(strong("In this tab, you can examine projected expenditures up to the year 2028")),
          br(),
          selectInput(inputId = "projection",
                      label = "Select expenditure:",
