@@ -6,7 +6,7 @@ library(rgdal)
 
 
 source("stateCSV1991Script.R")
-source("stateCSV2001Script.r")
+#source("stateCSV2001Script.r")
 source("age_tidy.R")
 source("gender_tidy.R")
 source("NHE_projection_tidy.R")
