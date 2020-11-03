@@ -35,7 +35,10 @@ tables <- lapply(c(files),
                      select(-(USD)) %>%
                      filter(State != "United States", State != "New England", State != "Mideast", State != "Mideast", 
                             State != "Great Lakes", State != "Plains", State != "Southeast",
-                            State != "Southwest", State != "Rocky Mountains", State !=  "Far West")
+                            State != "Southwest", State != "Rocky Mountains", State !=  "Far West") %>%
+                     sort(tidyTable$State)
+                   
+                   # names(tidyTable$State) <- sort(tidyTable$State)
                    
                  }
                 )
@@ -67,3 +70,5 @@ names(tables) <- c("TotalOtherResidentalAndPersonalHealthcare",
                    "NursingTotal",
                    "DrugsNonDurablesTotal",
                    "DurablesTotal")
+
+names(tables$TotalOtherResidentalAndPersonalHealthcare$State) <- order(tables$TotalOtherResidentalAndPersonalHealthcare$State)

@@ -34,7 +34,7 @@ function(input, output) {
   labels <- sprintf(
     "<strong>%s</strong><br/>%g people / mi<sup>2</sup>",
     #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
-    tables$Population$State, tables$Population$dollars
+    tables$Medicare$State, tables$Medicare$dollars
     #label = h2(tables[[input$expenditure]]$State),
   ) %>% lapply(htmltools::HTML)
   
