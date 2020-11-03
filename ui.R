@@ -29,10 +29,32 @@ dashboardPage(skin = "green",
          h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center"),
          br(),
          
-         img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 400, width = 400, align = "right"),
+         img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 600, width = 600, align = "right"),
+         h3(strong("Healthcare Expenditure data was compiled from the _____ was used to visualize the relationships between location, age, gender, and healthcare expenditure across the United States.")),
+         h3(""),
          br()
          
        )),
+      
+      tabItem(tabName = "statesTab", fluidRow(
+        h2("This is the states tab"),
+        selectInput(inputId = "expenditure",
+                    label = "Select expenditures:",
+                    choices = names(tables),
+                    multiple = TRUE,
+                    selected = "Population"
+        ),
+        selectInput(inputId = "state",
+                    label = "Select state(s)/region(s):",
+                    choices = unique(tables$Population$State),
+                    multiple = TRUE,
+                    selected = "Virginia"
+        ),
+        plotOutput(outputId = "expenditurePlot"
+                   # click = "expenditurePlotClick"
+        ),
+        leafletOutput(outputId = "leafletPlot")
+      )),
        
        
        tabItem(tabName = "genderTab", fluidRow(
@@ -75,27 +97,6 @@ dashboardPage(skin = "green",
          plotOutput(outputId = "agePlot")
         
        )),
-      
-       tabItem(tabName = "statesTab", fluidRow(
-         h2("This is the states tab"),
-         selectInput(inputId = "expenditure",
-                     label = "Select expenditures:",
-                     choices = names(tables),
-                     multiple = TRUE,
-                     selected = "Population"
-                     ),
-         selectInput(inputId = "state",
-                     label = "Select state(s)/region(s):",
-                     choices = unique(tables$Population$State),
-                     multiple = TRUE,
-                     selected = "Virginia"
-                     ),
-         plotOutput(outputId = "expenditurePlot"
-                    # click = "expenditurePlotClick"
-                   ),
-         leafletOutput(outputId = "leafletPlot")
-       )),
-      
          
        tabItem(tabName = "projectionsTab", fluidRow(
          h1(strong("Welcome to our projections tab"), style = "color: #4DD217", align = "center"),
