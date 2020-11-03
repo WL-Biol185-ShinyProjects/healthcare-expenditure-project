@@ -26,10 +26,17 @@ function(input, output) {
       geom_line(aes(color = State))
   })
 
-  output$expenditureInfo <- renderTable({
-    clickEvent <- input$expenditurePlotClick
-    # nearPoints(clickEvent)
-  })
+  # output$expenditureInfo <- renderTable({
+  #   clickEvent <- input$expenditurePlotClick
+  #   # nearPoints(clickEvent)
+  # })
+  
+  labels <- sprintf(
+    "<strong>%s</strong><br/>%g people / mi<sup>2</sup>",
+    #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
+    tables$Population$State, tables$Population$dollars
+    #label = h2(tables[[input$expenditure]]$State),
+  ) %>% lapply(htmltools::HTML)
   
   output$leafletPlot <- renderLeaflet({
     statesGeo@data <- left_join(statesGeo@data, tables[[input$expenditure]], 
@@ -46,11 +53,23 @@ function(input, output) {
         fillColor = ~pal(dollars),
         weight = 2,
         #work on the label functionality
-        label = h2(c(tables[[input$state]])),
+        #label = h2(tables[[input$expenditure]]$State),
+        #label = h2(tables$state)
+        highlight = highlightOptions(
+          weight = 5,
+          color = "#666",
+          dashArray = "",
+          fillOpacity = 0.7,
+          bringToFront = TRUE),
+        label = labels,
         opacity = 1,
         color = "white",
         dashArray = "3",
-        fillOpacity = 0.7
+        fillOpacity = 0.7,
+        labelOptions = labelOptions(
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "15px",
+          direction = "auto")
       
         ) %>%
 
