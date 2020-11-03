@@ -46,20 +46,20 @@ function(input, output) {
         fillColor = ~pal(dollars),
         weight = 2,
         #work on the label functionality
-        label = h2(c(tables[[input$State]])),
+        label = h2(c(tables[[input$state]])),
         opacity = 1,
         color = "white",
         dashArray = "3",
         fillOpacity = 0.7
-        
-        ) %>%
       
+        ) %>%
+
       addLegend("bottomright",
         pal          = pal,
         values       = ~(dollars),
         opacity      = 0.8,
         #might need to adjust the amount in billions depending on the bins and on the file
-        title        = "Amount in Billions",
+        title        = "Millions of Dollars",
         labFormat    = labelFormat(suffix = "$"))
     
   })
