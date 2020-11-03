@@ -52,9 +52,6 @@ function(input, output) {
       addPolygons(
         fillColor = ~pal(dollars),
         weight = 2,
-        #work on the label functionality
-        #label = h2(tables[[input$expenditure]]$State),
-        #label = h2(tables$state)
         highlight = highlightOptions(
           weight = 5,
           color = "#666",
