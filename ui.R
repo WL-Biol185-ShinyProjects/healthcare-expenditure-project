@@ -43,13 +43,13 @@ dashboardPage(skin = "green",
                     label = "Select expenditures:",
                     choices = names(tables),
                     multiple = FALSE,
-                    selected = "Population"
+                    selected = "Medicare"
         ),
         selectInput(inputId = "state",
                     label = "Select state(s)/region(s):",
-                    choices = unique(tables$Population$State),
+                    choices = unique(tables$Medicare$State),
                     multiple = TRUE,
-                    selected = "Virginia"
+                    selected = "New York"
         ),
         plotOutput(outputId = "expenditurePlot"
                    # click = "expenditurePlotClick"

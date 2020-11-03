@@ -33,11 +33,9 @@ tables <- lapply(c(files),
                    tidyTable <- tidyTable %>%
                      mutate(dollars = as.numeric(USD)) %>%
                      select(-(USD)) %>%
-                     filter(State != c("United States", "New England", "Mideast", "Great Lakes", "Plains", 
-                                       "Southeast", "Southwest", "Rocky Mountains", "Far West"))
-                   
-                   # return new table
-                   # tidyTable
+                     filter(State != "United States", State != "New England", State != "Mideast", State != "Mideast", 
+                            State != "Great Lakes", State != "Plains", State != "Southeast",
+                            State != "Southwest", State != "Rocky Mountains", State !=  "Far West")
                    
                  }
                 )
