@@ -42,7 +42,7 @@ dashboardPage(skin = "green",
         selectInput(inputId = "expenditure",
                     label = "Select expenditures:",
                     choices = names(tables),
-                    multiple = TRUE,
+                    multiple = FALSE,
                     selected = "Population"
         ),
         selectInput(inputId = "state",
