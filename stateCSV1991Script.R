@@ -32,7 +32,9 @@ tables <- lapply(c(files),
                    # convert USD data type to numeric
                    tidyTable <- tidyTable %>%
                      mutate(dollars = as.numeric(USD)) %>%
-                     select(-(USD))
+                     select(-(USD)) %>%
+                     filter(State != c("United States", "New England", "Mideast", "Great Lakes", "Plains", 
+                                       "Southeast", "Southwest", "Rocky Mountains", "Far West"))
                    
                    # return new table
                    # tidyTable
@@ -53,7 +55,6 @@ names(tables) <- c("TotalOtherResidentalAndPersonalHealthcare",
                    "DurablesPerCapita",
                    "TotalPersonalHealthCare",
                    "OtherResidentialAndPersonalHealthcarePerCapita",
-                   "Population",
                    "Medicare",
                    "MedicarePerEnrollee",
                    "MedicareEnrollment",
