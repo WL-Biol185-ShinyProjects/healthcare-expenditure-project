@@ -32,15 +32,22 @@ function(input, output) {
   # })
   
   labels <- sprintf(
-    "<strong>%s</strong><br/>%g people / mi<sup>2</sup>",
+    "<strong>%s</strong><br/>%s people / mi<sup>2</sup>",
     #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
-    unique(tables$Medicare$State), tables$Medicare$dollars
+    # year_df <- tables[[input$expenditure]] %>%
+    #   filter(Year == 2014) %>%
+    #   select(dollars),
+    statesGeo@data$NAME, statesGeo@data$dollars
     #label = h2(tables[[input$expenditure]]$State),
-    ## try unique to pull state names
   ) %>% lapply(htmltools::HTML)
   
   output$leafletPlot <- renderLeaflet({
-    statesGeo@data <- left_join(statesGeo@data, tables[[input$expenditure]], 
+    states_join <- tables[[input$expenditure]] %>%
+      filter(Year == 2014)
+    
+    states_join$State <- as.factor(states_join$State)
+    
+    statesGeo@data <- left_join(statesGeo@data, states_join, 
                                 by = c("NAME" = "State"))
     # yellow to red
     bins <- c(0, 100, 500, 1000, 2000, 4000, 8000, Inf)
