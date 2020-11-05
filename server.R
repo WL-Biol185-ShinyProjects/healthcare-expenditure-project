@@ -2,6 +2,7 @@ library(shiny)
 library(tidyverse)
 library(leaflet)
 library(rgdal)
+library(formattable)
 #library(viridis)
 
 
@@ -38,8 +39,17 @@ function(input, output) {
     
     states_join$State <- as.factor(states_join$State)
     
+    states_join$dollars <- as.integer(states_join$dollars)
+    
+    states_join$dollars <- comma(states_join$dollars)
+    
+    #states_join$dollars <- floor(states_join$dollars)
+    
     statesGeo@data <- left_join(statesGeo@data, states_join, 
                                 by = c("NAME" = "State"))
+    
+
+    
     
     labels <- sprintf(
       "<strong>%s</strong><br/> $ %s million",

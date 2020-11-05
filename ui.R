@@ -54,6 +54,7 @@ dashboardPage(skin = "green",
         plotOutput(outputId = "expenditurePlot"
                    # click = "expenditurePlotClick"
         ),
+        h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
         leafletOutput(outputId = "leafletPlot")
       )),
        
