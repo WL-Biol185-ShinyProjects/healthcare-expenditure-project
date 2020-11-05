@@ -42,7 +42,7 @@ function(input, output) {
                                 by = c("NAME" = "State"))
     
     labels <- sprintf(
-      "<strong>%s</strong><br/>%s people / mi<sup>2</sup>",
+      "<strong>%s</strong><br/> $ %s million",
       #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
       # year_df <- tables[[input$expenditure]] %>%
       #   filter(Year == 2014) %>%
