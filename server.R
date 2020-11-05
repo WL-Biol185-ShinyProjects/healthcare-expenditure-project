@@ -36,6 +36,7 @@ function(input, output) {
     #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
     tables$Medicare$State, tables$Medicare$dollars
     #label = h2(tables[[input$expenditure]]$State),
+    ## try unique to pull state names
   ) %>% lapply(htmltools::HTML)
   
   output$leafletPlot <- renderLeaflet({
