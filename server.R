@@ -30,16 +30,7 @@ function(input, output) {
   #   clickEvent <- input$expenditurePlotClick
   #   # nearPoints(clickEvent)
   # })
-  
-  labels <- sprintf(
-    "<strong>%s</strong><br/>%s people / mi<sup>2</sup>",
-    #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
-    # year_df <- tables[[input$expenditure]] %>%
-    #   filter(Year == 2014) %>%
-    #   select(dollars),
-    statesGeo@data$NAME, statesGeo@data$dollars
-    #label = h2(tables[[input$expenditure]]$State),
-  ) %>% lapply(htmltools::HTML)
+
   
   output$leafletPlot <- renderLeaflet({
     states_join <- tables[[input$expenditure]] %>%
@@ -49,6 +40,18 @@ function(input, output) {
     
     statesGeo@data <- left_join(statesGeo@data, states_join, 
                                 by = c("NAME" = "State"))
+    
+    labels <- sprintf(
+      "<strong>%s</strong><br/>%s people / mi<sup>2</sup>",
+      #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
+      # year_df <- tables[[input$expenditure]] %>%
+      #   filter(Year == 2014) %>%
+      #   select(dollars),
+      statesGeo@data$NAME, statesGeo@data$dollars
+      #label = h2(tables[[input$expenditure]]$State),
+    ) %>% lapply(htmltools::HTML)
+    
+    
     # yellow to red
     bins <- c(0, 100, 500, 1000, 2000, 4000, 8000, Inf)
     # palette is yellow or red - look at doc for other choices
