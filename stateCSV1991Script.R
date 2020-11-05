@@ -36,7 +36,8 @@ tables <- lapply(c(files),
                      filter(State != "United States", State != "New England", State != "Mideast", State != "Mideast", 
                             State != "Great Lakes", State != "Plains", State != "Southeast",
                             State != "Southwest", State != "Rocky Mountains", State !=  "Far West") %>%
-                     sort(tidyTable$State)
+                     # sort(tidyTable$State) %>%
+                     arrange(State)
                    
                    # names(tidyTable$State) <- sort(tidyTable$State)
                    
