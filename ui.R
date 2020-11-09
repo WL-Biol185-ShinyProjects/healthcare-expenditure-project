@@ -74,7 +74,7 @@ dashboardPage(skin = "green",
                      label = "Select gender(s):",
                      choices = unique(genders$OutOfPocketSpendingPerCapita$group),
                      multiple = TRUE,
-                     selected = "total"
+                     selected = "Total"
          ),
          plotOutput(outputId = "genderPlot")
          

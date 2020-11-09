@@ -24,7 +24,13 @@ function(input, output) {
     df <- tables[[input$expenditure]] %>%
       filter(State %in% input$state)
     ggplot(df, aes(Year, dollars)) +
-      geom_line(aes(color = State))
+      geom_line(aes(color = State)) +
+      # geom_point() +
+      ylab("USD (millions)") +
+      theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
+            axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
+            legend.text = element_text(size = 12)) +
+      scale_x_continuous(breaks = seq(1991, 2015, 3))
   })
 
   # output$expenditureInfo <- renderTable({
@@ -105,7 +111,14 @@ function(input, output) {
     df_gender <- genders[[input$expenditure_gender]] %>%
       filter(group %in% input$gender)
     ggplot(df_gender, aes(year, USD, color = group)) +
-      geom_line()
+      geom_line() +
+      # geom_point() +
+      xlab("Year") +
+      ylab("USD (millions)") +
+      theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
+            axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
+            legend.text = element_text(size = 12)) +
+      scale_x_continuous(breaks = seq(2002, 2014, 2))
 
   })
   
@@ -113,7 +126,13 @@ function(input, output) {
     df_age <- ages[[input$expenditure_age]] %>%
       filter(ageGroup %in% input$age)
     ggplot(df_age, aes(year, USD, color = ageGroup)) +
-      geom_line()
+      geom_line() +
+      xlab("Year") +
+      ylab("USD (millions)") +
+      theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
+            axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
+            legend.text = element_text(size = 12)) +
+      scale_x_continuous(breaks = seq(2002, 2014, 2))
     
   })
   
@@ -121,7 +140,13 @@ function(input, output) {
     df_projection <- NHE_tidy %>%
       filter(Expenditure %in% input$projection)
     ggplot(df_projection, aes(year, USD)) +
-      geom_line(aes(color = Expenditure))
+      geom_line(aes(color = Expenditure)) +
+      xlab("Year") +
+      ylab("USD (billions)") +
+      theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
+            axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
+            legend.text = element_text(size = 12)) +
+      scale_x_continuous(breaks = seq(2012, 2028, 2))
     
   })
   
