@@ -1,8 +1,9 @@
+# library imports
 library(shiny)
 library(leaflet)
 library(shinydashboard)
  
-
+# files are sourced
 source("stateCSV1991Script.R")
 source("age_tidy.R")
 source("gender_tidy.R")
@@ -21,9 +22,11 @@ dashboardPage(skin = "green",
     )
   ),
   
+  # dashboard is created
   dashboardBody(
     tabItems(
       
+      # introduction tab is created
       tabItem(tabName = "introductionTab", fluidRow(
          h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center"),
          br(),
@@ -38,6 +41,7 @@ dashboardPage(skin = "green",
          
        )),
       
+      # states tab is created
       tabItem(tabName = "statesTab", fluidRow(
         h1(strong("States Tab"), style = "color: #4DD217", align = "center"),
         h3(strong("In this tab, you can examine relationships between different expenditures compared with different states/regions")),
@@ -60,7 +64,7 @@ dashboardPage(skin = "green",
         leafletOutput(outputId = "leafletPlot")
       )),
        
-       
+       # gender tab is created
        tabItem(tabName = "genderTab", fluidRow(
          h1(strong("Gender Tab"), style = "color: #4DD217", align = "center"),
          h3(strong("In this tab, you can examine relationships between different expenditures compared with different genders")),
@@ -83,6 +87,7 @@ dashboardPage(skin = "green",
          
        )),
       
+      # age tab is created
        tabItem(tabName = "ageTab", fluidRow(
          h1(strong("Age Tab"), style = "color: #4DD217", align = "center"),
          h3(strong("In this tab, you can examine relationships between different expenditures compared with different age groups")),
@@ -103,7 +108,8 @@ dashboardPage(skin = "green",
          plotOutput(outputId = "agePlot")
         
        )),
-         
+      
+      # projections tab is created
        tabItem(tabName = "projectionsTab", fluidRow(
          h1(strong("Projections Tab"), style = "color: #4DD217", align = "center"),
          h3(strong("In this tab, you can examine projected expenditures up to the year 2028")),
