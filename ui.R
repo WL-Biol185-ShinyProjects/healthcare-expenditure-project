@@ -4,7 +4,6 @@ library(shinydashboard)
  
 
 source("stateCSV1991Script.R")
-#source("stateCSV2001Script.r")
 source("age_tidy.R")
 source("gender_tidy.R")
 source("NHE_projection_tidy.R")
@@ -30,7 +29,10 @@ dashboardPage(skin = "green",
          br(),
          
          img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 600, width = 600, align = "right"),
-         h3(strong("Healthcare Expenditure data was compiled from the _____ was used to visualize the relationships between location, age, gender, and healthcare expenditure across the United States.")),
+         h3(strong("Healthcare Expenditure data was compiled from the Centers for Medicare and Medicaid
+                   Services, Office of the Actuary, and the National Health Statistics Group. We use
+                   these data to visualize the relationships between location, age, gender, and healthcare 
+                   expenditures across the United States.")),
          h3(""),
          br()
          
