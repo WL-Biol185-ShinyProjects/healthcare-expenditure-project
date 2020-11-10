@@ -31,13 +31,15 @@ dashboardPage(skin = "green",
          h1(strong("Welcome to our healthcare expenditure project"), style = "color: #4DD217", align = "center"),
          br(),
          
-         img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg", height = 600, width = 600, align = "right"),
          h3(strong("Healthcare Expenditure data was compiled from the Centers for Medicare and Medicaid
                    Services, Office of the Actuary, and the National Health Statistics Group. We use
                    these data to visualize the relationships between location, age, gender, and healthcare 
                    expenditures across the United States.")),
-         h3(""),
-         br()
+         br(),
+         
+         # image is displayed and centered in the middle
+         div(img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg"), style="text-align: center;")
+         
          
        )),
       
