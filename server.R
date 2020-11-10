@@ -33,11 +33,13 @@ function(input, output) {
 
   })
   
-}
-
   output$state_info <- renderPrint({
-    nearPoints(df, input$state_hover)
+    nearPoints(df, input$state_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
   })
+  
+
+
+  
 
   # leaflet plot is created
   output$leafletPlot <- renderLeaflet({

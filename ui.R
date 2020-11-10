@@ -60,8 +60,8 @@ dashboardPage(skin = "green",
                     selected = "New York"
         ),
         plotOutput(outputId = "expenditurePlot",
-                   click = "state_hover"
-        ),
+                   hover = "state_hover"
+                   ),
         verbatimTextOutput("state_info"),
         h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
         leafletOutput(outputId = "leafletPlot")
