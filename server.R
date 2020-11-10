@@ -30,6 +30,13 @@ function(input, output) {
             axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
             legend.text = element_text(size = 12)) +
       scale_x_continuous(breaks = seq(1991, 2015, 3))
+
+  })
+  
+}
+
+  output$state_info <- renderPrint({
+    nearPoints(df, input$state_hover)
   })
 
   # leaflet plot is created
