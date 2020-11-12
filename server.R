@@ -4,12 +4,16 @@ library(tidyverse)
 library(leaflet)
 library(rgdal)
 library(formattable)
+#library(viridis)
+
 
 # files are sourced
 source("stateCSV1991Script.R")
+#source("stateCSV2001Script.r")
 source("age_tidy.R")
 source("gender_tidy.R")
 source("NHE_projection_tidy.R")
+
 
 # state coordinates data is imported from file
 statesGeo  <- rgdal::readOGR("states.geo.json")
@@ -17,6 +21,7 @@ statesGeo  <- rgdal::readOGR("states.geo.json")
 
 # Define server logic to draw plot and leaflet
 function(input, output) {
+  
   
   # expenditure plot is created
   output$expenditurePlot <- renderPlot({
@@ -30,17 +35,14 @@ function(input, output) {
             axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
             legend.text = element_text(size = 12)) +
       scale_x_continuous(breaks = seq(1991, 2015, 3))
-
   })
   
-  output$state_info <- renderPrint({
-    nearPoints(df, input$state_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
-  })
+  # output$expenditureInfo <- renderTable({
+  #   clickEvent <- input$expenditurePlotClick
+  #   # nearPoints(clickEvent)
+  # })
   
-
-
   
-
   # leaflet plot is created
   output$leafletPlot <- renderLeaflet({
     states_join <- tables[[input$expenditure]] %>%
@@ -52,19 +54,30 @@ function(input, output) {
     
     states_join$dollars <- comma(states_join$dollars)
     
+    #states_join$dollars <- floor(states_join$dollars)
+    
     statesGeo@data <- left_join(statesGeo@data, states_join, 
                                 by = c("NAME" = "State"))
     
-
+    
+    
     
     # labels for the leaflet
     labels <- sprintf(
       "<strong>%s</strong><br/> $ %s million",
+      #tables[[input$expenditure]]$State, tables[[input$expenditure]]$dollars
+      # year_df <- tables[[input$expenditure]] %>%
+      #   filter(Year == 2014) %>%
+      #   select(dollars),
       statesGeo@data$NAME, statesGeo@data$dollars
+      #label = h2(tables[[input$expenditure]]$State),
     ) %>% lapply(htmltools::HTML)
     
+    
+    # yellow to red
     # bins are created
     bins <- c(0, 100, 500, 1000, 2000, 4000, 8000, Inf)
+    # palette is yellow or red - look at doc for other choices
     
     # palette is Reds
     # domain - column on table to shade the states
@@ -90,17 +103,17 @@ function(input, output) {
           style = list("font-weight" = "normal", padding = "3px 8px"),
           textsize = "15px",
           direction = "auto")
+        
+      ) %>%
       
-        ) %>%
-
       # legend is added
       addLegend("bottomright",
-        pal          = pal,
-        values       = ~(dollars),
-        opacity      = 0.8,
-        #might need to adjust the amount in billions depending on the bins and on the file
-        title        = "Millions of Dollars",
-        labFormat    = labelFormat(suffix = "$"))
+                pal          = pal,
+                values       = ~(dollars),
+                opacity      = 0.8,
+                #might need to adjust the amount in billions depending on the bins and on the file
+                title        = "Millions of Dollars",
+                labFormat    = labelFormat(suffix = "$"))
     
   })
   
@@ -117,7 +130,7 @@ function(input, output) {
             axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
             legend.text = element_text(size = 12)) +
       scale_x_continuous(breaks = seq(2002, 2014, 2))
-
+    
   })
   
   # age plot is created
