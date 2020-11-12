@@ -1,4 +1,2 @@
 # healthcare-expenditure-project
-Relationship between healthcare expenditures and other factors such as healthcare outcomes
-
-Dream Team Squads Up Again
+Relationship between healthcare expenditures and demographic information such as age, gender, location, etc.
