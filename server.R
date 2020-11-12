@@ -32,12 +32,12 @@ function(input, output) {
       scale_x_continuous(breaks = seq(1991, 2015, 3))
 
   })
-  
-}
+  # output$state_info <- renderPrint({
+  #   nearPoints(df, input$state_hover)
+  # })
 
-  output$state_info <- renderPrint({
-    nearPoints(df, input$state_hover)
-  })
+
+
 
   # leaflet plot is created
   output$leafletPlot <- renderLeaflet({
@@ -149,3 +149,4 @@ function(input, output) {
   })
   
 }
+

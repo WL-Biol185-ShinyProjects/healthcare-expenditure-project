@@ -58,13 +58,13 @@ dashboardPage(skin = "green",
                     choices = unique(tables$Medicare$State),
                     multiple = TRUE,
                     selected = "New York"
-        ),
-        plotOutput(outputId = "expenditurePlot",
-                   click = "state_hover"
-        ),
-        verbatimTextOutput("state_info"),
-        h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
-        leafletOutput(outputId = "leafletPlot")
+        )
+        # plotOutput(outputId = "expenditurePlot",
+        #            click = "state_hover"
+        # ),
+        # verbatimTextOutput("state_info"),
+        # h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
+        # leafletOutput(outputId = "leafletPlot")
       )),
        
        # gender tab is created
