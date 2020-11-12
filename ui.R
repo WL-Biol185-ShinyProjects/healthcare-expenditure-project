@@ -128,6 +128,4 @@ dashboardPage(skin = "green",
                   ))
                 )
               )
-)  
-
-
+) 
