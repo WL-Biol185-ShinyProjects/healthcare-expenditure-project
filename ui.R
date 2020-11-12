@@ -3,7 +3,6 @@ library(shiny)
 library(leaflet)
 library(shinydashboard)
 
-
 # files are sourced
 source("stateCSV1991Script.R")
 source("age_tidy.R")
@@ -38,6 +37,11 @@ dashboardPage(skin = "green",
                    expenditures across the United States.")),
                     h3(""),
                     br()
+                    br(),
+                    
+                    # image is displayed and centered in the middle
+                    div(img(src = "US-flag-with-stethoscope-662-x-428-px-.jpg"), style="text-align: center;")
+                    
                     
                   )),
                   
@@ -63,7 +67,6 @@ dashboardPage(skin = "green",
                     h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
                     leafletOutput(outputId = "leafletPlot")
                   )),
-                  
                   
                   # gender tab is created
                   tabItem(tabName = "genderTab", fluidRow(
@@ -108,7 +111,6 @@ dashboardPage(skin = "green",
                     plotOutput(outputId = "agePlot")
                     
                   )),
-                  
                   
                   # projections tab is created
                   tabItem(tabName = "projectionsTab", fluidRow(
