@@ -46,7 +46,7 @@ dashboardPage(skin = "green",
                   # states tab is created
                   tabItem(tabName = "statesTab", fluidRow(
                     h1(strong("States Tab"), style = "color: #4DD217", align = "center"),
-                    h3(strong("In this tab, you can examine relationships between different expenditures compared with different states/regions")),
+                    h3(strong("In this tab, you can examine relationships between different expenditures compared with different states/regions (hover over data points for detailed information)")),
                     selectInput(inputId = "expenditure",
                                 label = "Select expenditures:",
                                 choices = names(tables),
@@ -72,7 +72,7 @@ dashboardPage(skin = "green",
                   # gender tab is created
                   tabItem(tabName = "genderTab", fluidRow(
                     h1(strong("Gender Tab"), style = "color: #4DD217", align = "center"),
-                    h3(strong("In this tab, you can examine relationships between different expenditures compared with different genders")),
+                    h3(strong("In this tab, you can examine relationships between different expenditures compared with different genders (hover over data points for detailed information)")),
                     br(),
                     
                     selectInput(inputId = "expenditure_gender",
@@ -98,7 +98,7 @@ dashboardPage(skin = "green",
                   # age tab is created
                   tabItem(tabName = "ageTab", fluidRow(
                     h1(strong("Age Tab"), style = "color: #4DD217", align = "center"),
-                    h3(strong("In this tab, you can examine relationships between different expenditures compared with different age groups")),
+                    h3(strong("In this tab, you can examine relationships between different expenditures compared with different age groups (hover over data points for detailed information)")),
                     br(),
                     selectInput(inputId = "expenditure_age",
                                 label = "Select expenditure:",
@@ -122,7 +122,7 @@ dashboardPage(skin = "green",
                   # projections tab is created
                   tabItem(tabName = "projectionsTab", fluidRow(
                     h1(strong("Projections Tab"), style = "color: #4DD217", align = "center"),
-                    h3(strong("In this tab, you can examine projected expenditures up to the year 2028")),
+                    h3(strong("In this tab, you can examine projected expenditures up to the year 2028 (hover over data points for detailed information)")),
                     br(),
                     selectInput(inputId = "projection",
                                 label = "Select expenditure:",
