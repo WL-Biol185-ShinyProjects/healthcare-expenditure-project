@@ -37,10 +37,9 @@ function(input, output) {
       scale_x_continuous(breaks = seq(1991, 2015, 3))
   })
   
-  # output$expenditureInfo <- renderTable({
-  #   clickEvent <- input$expenditurePlotClick
-  #   # nearPoints(clickEvent)
-  # })
+  output$state_info <- renderPrint({
+    nearPoints(df, input$state_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
+  })
   
   
   # leaflet plot is created
