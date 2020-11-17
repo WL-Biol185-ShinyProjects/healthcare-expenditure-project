@@ -87,12 +87,10 @@ dashboardPage(skin = "green",
                                 multiple = TRUE,
                                 selected = "Total"
                     ),
-                    plotOutput(outputId = "genderPlot"),
-                    plotOutput(outputId = "genderHoverPlot",
+                    plotOutput(outputId = "genderPlot",
                                hover = "gender_hover"
                     ),
-                    tableOutput("gender_info"),
-                    h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
+                    tableOutput("gender_info")
                     
                     
                   )),
@@ -114,7 +112,10 @@ dashboardPage(skin = "green",
                                 multiple = TRUE,
                                 selected = "0-18"
                     ),
-                    plotOutput(outputId = "agePlot")
+                    plotOutput(outputId = "agePlot",
+                               hover = "age_hover"
+                    ),
+                    tableOutput("age_info")
                     
                   )),
                   
@@ -129,7 +130,10 @@ dashboardPage(skin = "green",
                                 multiple = TRUE,
                                 selected = "National Health Expenditures"
                     ),
-                    plotOutput(outputId = "projectionsPlot")
+                    plotOutput(outputId = "projectionsPlot",
+                               hover = "projections_hover"
+                    ),
+                    tableOutput("projections_info")
                     
                   ))
                 )

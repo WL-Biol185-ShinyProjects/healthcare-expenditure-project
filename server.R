@@ -40,7 +40,7 @@ function(input, output) {
   output$state_info <- renderTable({
     df <- tables[[input$expenditure]] %>%
       filter(State %in% input$state)
-    nearPoints(df, input$state_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
+    nearPoints(df, input$state_hover, threshold = 10, maxpoints = 1, addDist = FALSE)
   })
   
   
@@ -124,7 +124,7 @@ function(input, output) {
       filter(group %in% input$gender)
     ggplot(df_gender, aes(year, USD, color = group)) +
       geom_line() +
-      # geom_point() +
+      geom_point() +
       xlab("Year") +
       ylab("USD (millions)") +
       theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
@@ -137,7 +137,7 @@ function(input, output) {
   output$gender_info <- renderTable({
     df_gender <- genders[[input$expenditure_gender]] %>%
       filter(group %in% input$gender)
-    nearPoints(df_gender, input$gender_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
+    nearPoints(df_gender, input$gender_hover, threshold = 10, maxpoints = 1, addDist = FALSE)
   })
   
   # age plot is created
@@ -146,6 +146,7 @@ function(input, output) {
       filter(ageGroup %in% input$age)
     ggplot(df_age, aes(year, USD, color = ageGroup)) +
       geom_line() +
+      geom_point() +
       xlab("Year") +
       ylab("USD (millions)") +
       theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
@@ -155,12 +156,19 @@ function(input, output) {
     
   })
   
+  output$age_info <- renderTable({
+    df_age <- ages[[input$expenditure_age]] %>%
+      filter(ageGroup %in% input$age)
+    nearPoints(df_age, input$age_hover, threshold = 10, maxpoints = 1, addDist = FALSE)
+  })
+  
   # projections plot is created
   output$projectionsPlot <- renderPlot({
     df_projection <- NHE_tidy %>%
       filter(Expenditure %in% input$projection)
-    ggplot(df_projection, aes(year, USD)) +
-      geom_line(aes(color = Expenditure)) +
+    ggplot(df_projection, aes(year, USD, color = Expenditure)) +
+      geom_line() +
+      geom_point() +
       xlab("Year") +
       ylab("USD (billions)") +
       theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
@@ -168,6 +176,12 @@ function(input, output) {
             legend.text = element_text(size = 12)) +
       scale_x_continuous(breaks = seq(2012, 2028, 2))
     
+  })
+  
+  output$projections_info <- renderTable({
+    df_projection <- NHE_tidy %>%
+      filter(Expenditure %in% input$projection)
+    nearPoints(df_projection, input$projections_hover, threshold = 10, maxpoints = 1, addDist = FALSE)
   })
   
 }
