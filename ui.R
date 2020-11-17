@@ -62,8 +62,10 @@ dashboardPage(skin = "green",
                     plotOutput(outputId = "expenditurePlot",
                                hover = "state_hover"
                     ),
-                    verbatimTextOutput("state_info"),
+                    tableOutput("state_info"),
                     h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
+                    
+                    
                     leafletOutput(outputId = "leafletPlot")
                   )),
                   

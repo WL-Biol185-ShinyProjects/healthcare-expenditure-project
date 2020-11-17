@@ -37,7 +37,9 @@ function(input, output) {
       scale_x_continuous(breaks = seq(1991, 2015, 3))
   })
   
-  output$state_info <- renderPrint({
+  output$state_info <- renderTable({
+    df <- tables[[input$expenditure]] %>%
+      filter(State %in% input$state)
     nearPoints(df, input$state_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
   })
   
