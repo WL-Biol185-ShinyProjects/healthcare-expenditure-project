@@ -27,9 +27,9 @@ function(input, output) {
   output$expenditurePlot <- renderPlot({
     df <- tables[[input$expenditure]] %>%
       filter(State %in% input$state)
-    ggplot(df, aes(Year, dollars)) +
+    ggplot(df, aes(Year, dollars, color = State)) +
       geom_line(aes(color = State)) +
-      # geom_point() +
+      geom_point() +
       ylab("USD (millions)") +
       theme(axis.text = element_text(size = 12), axis.title = element_text(size = 14, face = "bold"),
             axis.title.x = element_text(vjust = -1), axis.title.y = element_text(vjust = 2),
@@ -132,6 +132,12 @@ function(input, output) {
             legend.text = element_text(size = 12)) +
       scale_x_continuous(breaks = seq(2002, 2014, 2))
     
+  })
+  
+  output$gender_info <- renderTable({
+    df_gender <- genders[[input$expenditure_gender]] %>%
+      filter(group %in% input$gender)
+    nearPoints(df_gender, input$gender_hover, threshold = 10, maxpoints = 1, addDist = TRUE)
   })
   
   # age plot is created

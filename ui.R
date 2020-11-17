@@ -87,7 +87,12 @@ dashboardPage(skin = "green",
                                 multiple = TRUE,
                                 selected = "Total"
                     ),
-                    plotOutput(outputId = "genderPlot")
+                    plotOutput(outputId = "genderPlot"),
+                    plotOutput(outputId = "genderHoverPlot",
+                               hover = "gender_hover"
+                    ),
+                    tableOutput("gender_info"),
+                    h1(strong("2014 data"), style = "color: #4DD217", align = "center"),
                     
                     
                   )),
